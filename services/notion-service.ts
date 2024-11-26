@@ -11,6 +11,10 @@ export default class NotionService {
     async getPublishedPosts(): Promise<BlogPost[]> {
         const database = process.env.NOTION_BLOG_DATABASE_ID ?? "";
 
+        if (!database) { 
+            throw new Error("NOTION_BLOG_DATABASE_ID 환경 변수가 설정되지 않았습니다."); 
+        }
+        
         try {
             const response = await this.client.databases.query({
                 database_id: database,
