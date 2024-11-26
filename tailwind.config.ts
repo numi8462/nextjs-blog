@@ -26,8 +26,7 @@ const config = {
       colors: {
         black: {
           DEFAULT: "#000",
-          100: "#000319",
-          200: "#1f2833",
+          100: "#222222",
           
         },
         white: {
@@ -63,6 +62,7 @@ const config = {
   },
   plugins: [
     require("tailwindcss-animate"),
+    require("@tailwindcss/typography"),
     addVariablesForColors,
   ],
 } satisfies Config;
