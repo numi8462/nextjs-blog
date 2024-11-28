@@ -62,7 +62,6 @@ export default class NotionService {
 
         return {
             id: page.id,
-            cover: cover,
             title: page.properties['이름']?.title?.[0]?.plain_text || "제목 없음",
             tags: page.properties['태그']?.multi_select || [],
             description: page.properties['설명']?.rich_text?.[0]?.plain_text || "설명 없음",

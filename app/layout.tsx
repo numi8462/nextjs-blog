@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Noto_Sans_KR } from 'next/font/google';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -12,12 +13,16 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+const notoSansKr = Noto_Sans_KR({
+  weight: ['500'],
+  subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
   title: "YBlog",
   description: "Next.js와 Notion API를 활용한 개인 블로그",
   icons: {
-    icon: './blog.svg', 
+    icon: './logo.svg', 
   },
 };
 
@@ -29,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${notoSansKr.className}`}
       >
         {children}
       </body>

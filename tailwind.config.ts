@@ -46,6 +46,9 @@ const config = {
         orange : {
           100: "#f88379"
         },
+        yellow : {
+          DEFAULT: '#f3b301'
+        },
         purple: "#CBACF9",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

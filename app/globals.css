@@ -14,8 +14,29 @@
   }
 }
 
+@font-face {
+  font-family: "NanumPen";
+  font-weight: 200;
+  src: url('/fonts/NanumSquareNeo-bRg.ttf') format('ttf');
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'NanumPen';
+}
+
+@layer utilities {
+  .heading {
+    @apply font-bold text-4xl md:text-5xl text-center;
+  }
+  .zoom-effect:hover { 
+    transform: scale(1.1); 
+  } 
+  .zoom-effect { 
+    transition: transform 0.3s ease;
+  }
+  .sidebar {
+    @apply hidden lg:flex;
+  }
 }

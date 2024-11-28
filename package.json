@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@notionhq/client": "^2.2.15",
+    "dayjs": "^1.11.13",
     "next": "15.0.3",
+    "next-fonts": "^1.5.1",
     "nextjs-blog": "file:",
     "notion-to-md": "^3.1.1",
     "react": "19.0.0-rc-66855b96-20241106",
