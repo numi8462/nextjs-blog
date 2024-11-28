@@ -7,9 +7,6 @@ type BlogCardProps = {
     post: BlogPost;
 };
 
-const localizedFormat = require("dayjs/plugin/localizedFormat");
-dayjs.extend(localizedFormat);
-
 const BlogCard: FunctionComponent<BlogCardProps> = ({ post }) => {
     return (
         <Link href={`/post/${post.id}`}>
