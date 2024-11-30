@@ -4,10 +4,11 @@ import Head from "next/head";
 import NotionService from '@/services/notion-service';
 import { PostPage } from '@/@types/schema';
 
+type PageParams = {
+  slug: string;
+}
 type PageProps = { 
-    params: { 
-      slug: string;
-    }; 
+    params: PageParams;
 }
 
 const Post = async ({ params }: PageProps) => {
