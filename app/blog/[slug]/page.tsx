@@ -3,12 +3,8 @@ import ReactMarkdown from "react-markdown";
 import Head from "next/head";
 import NotionService from '@/services/notion-service';
 import { PostPage } from '@/@types/schema';
-import { FunctionComponent } from 'react';
 
 
-type PageProps = { 
-    params: Promise<{ slug: string}>
-}
 
 const Post = async ({ params }) => {
     const notionService = new NotionService();
