@@ -10,7 +10,7 @@ type BlogCardProps = {
 
 const BlogCard: FunctionComponent<BlogCardProps> = ({ post }) => {
     return (
-        <Link href={`/post/${post.id}`}>
+        <Link href={`/blog/${post.slug}`}>
             <div className="flex flex-col flex-1 max-w-[600px]">
                 <div className="flex flex-col gap-2 relative group ">
                     <div className="">
@@ -32,7 +32,7 @@ const BlogCard: FunctionComponent<BlogCardProps> = ({ post }) => {
                         </span>
                     </div>
                 </div>
-                <div className="flex flex-col p-2 gap-2">
+                <div className="flex flex-col p-2">
                     <span className="">
                         <h4 className="text-2xl">{dayjs(post.created).format("YYYY-MM-DD")}</h4>
                     </span>
