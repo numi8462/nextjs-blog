@@ -4,14 +4,11 @@ import Head from "next/head";
 import NotionService from "@/services/notion-service";
 import { PostPage } from "@/@types/schema";
 
-// Define the type for PageProps
-type PageProps = {
-    params: {
-        slug: string;
-    };
-};
+interface Params {
+  slug: string;
+}
 
-const Post = async ({ params }: PageProps) => {
+const Post = async ({ params } : { params: Params}) => {
     const notionService = new NotionService();
     const p: PostPage = await notionService.getSingleBlogPost(params.slug);
 
