@@ -26,7 +26,7 @@ const config = {
       colors: {
         black: {
           DEFAULT: "#000",
-          100: "#222222",
+          100: "#282828",
           
         },
         white: {
@@ -60,6 +60,9 @@ const config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: { 
+        fugaz: ["var(--fugaz)"], 
       },
     },
   },

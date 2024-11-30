@@ -44,24 +44,28 @@ export default class NotionService {
 
     private static pageToPostTransformer(page: any): BlogPost {
         let cover = page.cover;
-
+        const coverImg = '/cover.jpg';
+        // console.log("cover:"+JSON.stringify(cover));
         if (!cover) {
-            cover = { type: "default", url: "" };
+            cover = { type: "default", url: coverImg };
         }
 
         switch (cover.type) {
             case "file":
-                cover = page.cover.file;
+                cover = page.cover.file.url;
                 break;
             case "external":
                 cover = page.cover.external.url;
+                console.log(cover);
                 break;
             default:
-                cover = "";
+                cover = coverImg;
+                break;
         }
 
         return {
             id: page.id,
+            cover: cover,
             title: page.properties['이름']?.title?.[0]?.plain_text || "제목 없음",
             tags: page.properties['태그']?.multi_select || [],
             description: page.properties['설명']?.rich_text?.[0]?.plain_text || "설명 없음",

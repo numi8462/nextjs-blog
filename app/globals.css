@@ -37,6 +37,6 @@ body {
     transition: transform 0.3s ease;
   }
   .sidebar {
-    @apply hidden lg:flex;
+    @apply hidden xl:flex;
   }
 }

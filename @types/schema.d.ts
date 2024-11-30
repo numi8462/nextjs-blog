@@ -6,6 +6,7 @@ export type Tag = {
 
 export type BlogPost = {
   id: string;
+  cover: string;
   slug: string;
   title: string;
   tags: Tag[];
@@ -13,3 +14,8 @@ export type BlogPost = {
   updated: string;
   created: string;
 };
+
+export type PostPage = {
+  post: BlogPost,
+  markdown: string
+}

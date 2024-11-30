@@ -2,7 +2,7 @@ import React from "react";
 
 const SearchBar = () => {
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col bg">
             <div className="flex px-4 py-3 rounded-md border-2 border-gray-500 mx-auto font-[sans-serif]">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -15,7 +15,7 @@ const SearchBar = () => {
                 <input
                     type="text"
                     placeholder="검색어를 입력하세요."
-                    className="w-[15rem] outline-none bg-transparent text-white text-sm"
+                    className="w-[13rem] outline-none bg-transparent text-white text-sm"
                 />
             </div>
         </div>
