@@ -8,7 +8,7 @@ import { PostPage } from "@/@types/schema";
 type PageProps = {
     params: {
         slug: string;
-    };
+    } & Promise<any>;
 };
 
 const Post = async ({ params }: PageProps) => {
