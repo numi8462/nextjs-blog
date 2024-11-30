@@ -48,7 +48,7 @@ export default class NotionService {
         }
     }
 
-    async getSingleBlogPost(slug: string): Promise<PostPage | null> {
+    async getSingleBlogPost(slug: string) {
         if (!slug) {
             throw new Error("Slug parameter is required");
         }
