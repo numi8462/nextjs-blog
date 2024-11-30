@@ -14,7 +14,7 @@ type PageProps = {
 
 const Post = async ({ params }: PageProps) => {
     const notionService = new NotionService();
-    const p: PostPage = await notionService.getSingleBlogPost(params.slug);
+    const p: PostPage | null = await notionService.getSingleBlogPost(params.slug);
 
     if (!p) {
         notFound();
