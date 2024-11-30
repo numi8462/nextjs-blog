@@ -10,9 +10,9 @@ type PageProps = {
     params: Promise<{ slug: string}>
 }
 
-const Post: FunctionComponent<PageProps> = async ({ params }) => {
+const Post = async ({ params }) => {
     const notionService = new NotionService();
-    const p: PostPage | null = await notionService.getSingleBlogPost((await params).slug);
+    const p: PostPage = await notionService.getSingleBlogPost((await params).slug);
 
     if (!p) {
         notFound();
