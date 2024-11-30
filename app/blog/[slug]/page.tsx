@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import Head from "next/head";
 import NotionService from '@/services/notion-service';
 import { PostPage } from '@/@types/schema';
+import { FunctionComponent } from 'react';
 
 
 type PageProps = { 
@@ -11,7 +12,7 @@ type PageProps = {
     };
 }
 
-const Post = async ({ params }: PageProps) => {
+const Post: FunctionComponent<PageProps> = async ({ params }) => {
     const notionService = new NotionService();
     const p: PostPage | null = await notionService.getSingleBlogPost(params.slug);
 
