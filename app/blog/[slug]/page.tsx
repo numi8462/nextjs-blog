@@ -5,10 +5,11 @@ import NotionService from "@/services/notion-service";
 import { PostPage } from "@/@types/schema";
 
 // Define the type for PageProps
+type Params = {
+  slug: string;
+}
 type PageProps = {
-    params: {
-        slug: string;
-    } & Promise<any>;
+    params: Params;
 };
 
 const Post = async ({ params }: PageProps) => {
