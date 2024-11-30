@@ -11,7 +11,7 @@ type PageProps = {
     };
 }
 
-const Post = async ({ params }: PageProps) => {
+const Post = async ({ params }: PageProps): Promise<JSX.Element> => {
     const notionService = new NotionService();
     const p: PostPage  = await notionService.getSingleBlogPost(params.slug);
 
