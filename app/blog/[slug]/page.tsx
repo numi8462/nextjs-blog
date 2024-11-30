@@ -11,9 +11,9 @@ type PageProps = {
     };
 }
 
-const Post = async ({ params }: PageProps): Promise<JSX.Element> => {
+const Post = async ({ params }: PageProps) => {
     const notionService = new NotionService();
-    const p: PostPage  = await notionService.getSingleBlogPost(params.slug);
+    const p: PostPage | null = await notionService.getSingleBlogPost(params.slug);
 
     if (!p) {
         notFound();
@@ -51,5 +51,6 @@ export async function generateStaticParams() {
         slug: post.slug
     }));
 }
+
 
 export default Post;
