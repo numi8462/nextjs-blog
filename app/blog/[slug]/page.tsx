@@ -7,14 +7,12 @@ import { FunctionComponent } from 'react';
 
 
 type PageProps = { 
-    params: {
-      slug: string;
-    };
+    params: Promise<{ slug: string}>
 }
 
 const Post: FunctionComponent<PageProps> = async ({ params }) => {
     const notionService = new NotionService();
-    const p: PostPage | null = await notionService.getSingleBlogPost(params.slug);
+    const p: PostPage | null = await notionService.getSingleBlogPost((await params).slug);
 
     if (!p) {
         notFound();
