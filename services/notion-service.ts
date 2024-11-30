@@ -1,5 +1,6 @@
 import { BlogPost } from "@/@types/schema";
 import { Client } from "@notionhq/client";
+import coverImage from '../public/cover.jpg';
 
 export default class NotionService {
     client: Client;
@@ -44,7 +45,7 @@ export default class NotionService {
 
     private static pageToPostTransformer(page: any): BlogPost {
         let cover = page.cover;
-        const coverImg = '/cover.jpg';
+        const coverImg = coverImage;
         // console.log("cover:"+JSON.stringify(cover));
         if (!cover) {
             cover = { type: "default", url: coverImg };
