@@ -1,6 +1,6 @@
 import { BlogPost, PostPage } from "@/@types/schema";
 import { Client } from "@notionhq/client";
-import coverImage from "../public/cover.jpg";
+import defaultCover from "../public/cover.jpg";
 import { NotionToMarkdown } from "notion-to-md";
 
 export default class NotionService {
@@ -104,8 +104,8 @@ export default class NotionService {
 
     private static pageToPostTransformer(page: any): BlogPost {
         let cover = page.cover;
-        const coverImg = coverImage;
-        // console.log("cover:"+JSON.stringify(cover));
+        let coverImg = defaultCover;
+        console.log("cover:"+JSON.stringify(cover));
         if (!cover) {
             cover = { type: "default", url: coverImg };
         }
@@ -139,6 +139,7 @@ export default class NotionService {
                 page.properties["수정일"]?.last_edited_time ||
                 new Date().toISOString(),
             slug: page.properties["수식"]?.formula?.string || "수식 없음",
+            
         };
     }
 }

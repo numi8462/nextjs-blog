@@ -14,17 +14,12 @@
   }
 }
 
-@font-face {
-  font-family: "NanumPen";
-  font-weight: 200;
-  src: url('/fonts/NanumSquareNeo-bRg.ttf') format('ttf');
-}
-
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'NanumPen';
 }
+
+
 
 @layer utilities {
   .heading {
@@ -38,5 +33,35 @@ body {
   }
   .sidebar {
     @apply hidden xl:flex;
+  }
+  .notion__container .notion-header {
+    display: none !important;
+  }
+  .reactMarkDown h1{
+    @apply text-white;
+  }
+  .reactMarkDown h2{
+    @apply text-white;
+  }
+  .reactMarkDown h3{
+    @apply text-white;
+  }
+  .reactMarkDown p{
+    @apply text-white;
+  }
+  .reactMarkDown code{
+    @apply text-white;
+  }
+  .reactMarkDown strong{
+    @apply text-white font-bold;
+  }
+  .reactMarkDown code{
+    @apply p-[8px] bg-[#3B414D] rounded-[4px] text-red-500;
+  }
+  .reactMarkDown code::before {
+    @apply content-none;
+  }
+  .reactMarkDown code::after {
+    @apply content-none;
   }
 }

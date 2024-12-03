@@ -26,8 +26,8 @@ const config = {
       colors: {
         black: {
           DEFAULT: "#000",
-          100: "#282828",
-          
+          100: "#202125",
+          200: "#3B414D",
         },
         white: {
           DEFAULT: "#FFF",
@@ -63,6 +63,7 @@ const config = {
       },
       fontFamily: { 
         fugaz: ["var(--fugaz)"], 
+        nanum: ["var(--nanum)"]
       },
     },
   },
