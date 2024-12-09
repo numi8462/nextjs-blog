@@ -1,28 +1,22 @@
-import { useState } from "react";
-import { BlogPost } from "../@types/schema";
-import BlogCard from "../components/BlogCard";
-import NotionService from "../services/notion-service";
-import Tags from "@/components/ui/Tags";
-import Sidebar from "@/components/ui/Sidebar";
+import NotionService from '@/services/notion-service';
+import React from 'react';
+import { BlogPost } from '@/@types/schema';
+import Sidebar from '@/components/ui/Sidebar';
+import Tags from '@/components/ui/Tags';
+import BlogCard from '@/components/BlogCard';
 
-const Home = async () => {
+const TagPage = async ({ params }) => {
     const notionService = new NotionService();
-    const posts: BlogPost[] = await notionService.getPublishedPosts();
+    const posts: BlogPost[] = await notionService.getPostsByTag(params.tag);
 
     return (
         <div className="min-h-screen bg-black-100">
-            {/* <div className="sticky top-0 z-50">
-                <Navbar />
-            </div> */}
             <main className="mx-auto relative">
                 <div className="flex justify-between w-full relative">
                     <Sidebar />
 
                     <div className="flex flex-col justify-center items-center h-full mx-auto w-full px-10 mb-10 mt-16">
-                        <h1 className="text-7xl font-extrabold font-fugaz">{"POSTS."}</h1>
-                        <div className="xl:hidden">
-                            <Tags />
-                        </div>
+                        <h1 className="text-7xl font-extrabold font-fugaz">{`"${params.tag}"`}</h1>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10 w-full items-start place-items-center">
                             {posts.map((post) => (
                                 <BlogCard key={post.id} post={post} />
@@ -39,4 +33,4 @@ const Home = async () => {
     );
 };
 
-export default Home;
+export default TagPage;

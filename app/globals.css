@@ -9,7 +9,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #202125;
     --foreground: #ededed;
   }
 }
@@ -34,29 +34,26 @@ body {
   .sidebar {
     @apply hidden xl:flex;
   }
+  .tags {
+    @apply max-xl:flex max-xl:justify-center max-xl:items-center max-xl:gap-5 max-xl:flex-wrap;
+  }
   .notion__container .notion-header {
     display: none !important;
   }
-  .reactMarkDown h1{
+  .reactMarkDown h1,
+  .reactMarkDown h2,
+  .reactMarkDown h3,
+  .reactMarkDown p,
+  .reactMarkDown code,
+  .reactMarkDown ul {
     @apply text-white;
   }
-  .reactMarkDown h2{
-    @apply text-white;
-  }
-  .reactMarkDown h3{
-    @apply text-white;
-  }
-  .reactMarkDown p{
-    @apply text-white;
-  }
-  .reactMarkDown code{
-    @apply text-white;
-  }
+  
   .reactMarkDown strong{
     @apply text-white font-bold;
   }
   .reactMarkDown code{
-    @apply p-[8px] bg-[#3B414D] rounded-[4px] text-red-500;
+    @apply p-[5px] bg-[#3B414D] rounded-[4px] text-red-500 text-lg mx-2;
   }
   .reactMarkDown code::before {
     @apply content-none;

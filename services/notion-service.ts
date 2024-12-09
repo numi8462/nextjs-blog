@@ -1,7 +1,8 @@
-import { BlogPost, PostPage } from "@/@types/schema";
+import { BlogPost, PostPage, Tag } from "@/@types/schema";
 import { Client } from "@notionhq/client";
 import defaultCover from "../public/cover.jpg";
 import { NotionToMarkdown } from "notion-to-md";
+import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"; // Import the type definition
 
 export default class NotionService {
     client: Client;
@@ -48,12 +49,123 @@ export default class NotionService {
         }
     }
 
+    async getPostsByTag(tag: string): Promise<BlogPost[]> {
+        const database = process.env.NOTION_BLOG_DATABASE_ID ?? "";
+    
+        if (!database) {
+            throw new Error(
+                "NOTION_BLOG_DATABASE_ID 환경 변수가 설정되지 않았습니다."
+            );
+        }
+    
+        try {
+            const response = await this.client.databases.query({
+                database_id: database,
+                filter: {
+                    property: "태그",
+                    multi_select: {
+                        contains: tag,
+                    },
+                },
+                sorts: [
+                    {
+                        property: "생성일",
+                        direction: "descending",
+                    },
+                ],
+            });
+    
+            return response.results.map((res) => {
+                // Transform res to blog post
+                return NotionService.pageToPostTransformer(res);
+            });
+        } catch (error) {
+            console.error("Error querying database:", error);
+            throw error;
+        }
+    }
+
+    async getAllTags(): Promise<Tag[]> {
+        const database = process.env.NOTION_BLOG_DATABASE_ID ?? "";
+    
+        if (!database) {
+            throw new Error(
+                "NOTION_BLOG_DATABASE_ID 환경 변수가 설정되지 않았습니다."
+            );
+        }
+    
+        try {
+            const response = await this.client.databases.query({
+                database_id: database,
+                filter: {
+                    property: "태그",
+                    multi_select: {
+                        is_not_empty: true,
+                    },
+                },
+            });
+    
+            const tagCounts: { [tag: string]: { count: number, color: string, id: string } } = {};
+    
+            response.results.forEach((res) => {
+                if ("properties" in res) {
+                    const properties = (res as PageObjectResponse).properties;
+                    if (properties["태그"]?.type === "multi_select") {
+                        const postTags = properties["태그"].multi_select;
+                        postTags.forEach((tag) => {
+                            const color = tag.color || "#f9f9f9"; // Provide a default color if undefined
+                            if (tagCounts[tag.name]) {
+                                tagCounts[tag.name].count++;
+                            } else {
+                                tagCounts[tag.name] = { count: 1, color, id: tag.id };
+                            }
+                        });
+                    }
+                }
+            });
+    
+            return Object.entries(tagCounts).map(([name, { count, color, id }]) => ({ id, name, count, color }));
+        } catch (error) {
+            console.error("Error querying database:", error);
+            throw error;
+        }
+    }
+    
+    async getTotalPostCount(): Promise<number> {
+        const database = process.env.NOTION_BLOG_DATABASE_ID ?? "";
+
+        if (!database) {
+            throw new Error(
+                "NOTION_BLOG_DATABASE_ID 환경 변수가 설정되지 않았습니다."
+            );
+        }
+
+        try {
+            const response = await this.client.databases.query({
+                database_id: database,
+                filter: {
+                    property: "퍼블리시",
+                    checkbox: {
+                        equals: true,
+                    },
+                },
+            });
+
+            return response.results.length;
+        } catch (error) {
+            console.error("Error querying database:", error);
+            throw error;
+        }
+    }
+
+    
+
     async getSingleBlogPost(slug: string): Promise<PostPage> {
         if (!slug) {
             throw new Error("Slug parameter is required");
         }
         let post, markdown;
-        console.log(`Fetching post for slug: ${slug}`);
+        // console.log(`Fetching post for slug: ${slug}`);
         const database = process.env.NOTION_BLOG_DATABASE_ID ?? "";
         if (!database) {
             throw new Error(
@@ -89,8 +201,8 @@ export default class NotionService {
 
             const mdblocks = await this.n2m.pageToMarkdown(page.id);
             markdown = this.n2m.toMarkdownString(mdblocks).parent;
-            console.log(mdblocks)
-            console.log(markdown)
+            // console.log(mdblocks)
+            // console.log(markdown)
 
             return { 
                 post, 
@@ -105,7 +217,7 @@ export default class NotionService {
     private static pageToPostTransformer(page: any): BlogPost {
         let cover = page.cover;
         let coverImg = defaultCover;
-        console.log("cover:"+JSON.stringify(cover));
+        // console.log("cover:"+JSON.stringify(cover));
         if (!cover) {
             cover = { type: "default", url: coverImg };
         }
@@ -116,7 +228,7 @@ export default class NotionService {
                 break;
             case "external":
                 cover = page.cover.external.url;
-                console.log(cover);
+                // console.log(cover);
                 break;
             default:
                 cover = coverImg;

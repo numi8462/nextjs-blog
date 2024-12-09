@@ -1,4 +1,5 @@
 export type Tag = {
+  count: ReactNode;
   color: string;
   id: string;
   name: string;
@@ -18,4 +19,11 @@ export type BlogPost = {
 export type PostPage = {
   post: BlogPost,
   markdown: string
+}
+
+export type Tag = {
+  name: string,
+  count: number,
+  id: string,
+  color: string
 }

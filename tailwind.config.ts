@@ -23,6 +23,13 @@ const config = {
       },
     },
     extend: {
+      typography: (theme) => ({
+        DEFAULT: { 
+          css: { 
+            maxWidth: '80ch', 
+          }
+        },
+      }),
       colors: {
         black: {
           DEFAULT: "#000",
