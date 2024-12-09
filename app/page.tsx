@@ -18,11 +18,13 @@ const Home = async () => {
                     <Sidebar />
 
                     <div className="flex flex-col justify-center items-center h-full mx-auto w-full px-10 mb-10 mt-16">
-                        <h1 className="text-7xl font-extrabold font-fugaz">{"POSTS."}</h1>
+                        <h1 className="text-7xl font-extrabold font-fugaz"  >            
+                            {"POSTS."} 
+                        </h1>            
                         <div className="xl:hidden">
                             <Tags />
                         </div>
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10 w-full items-start place-items-center">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10 w-full items-start place-items-center popupFromLeft">
                             {posts.map((post) => (
                                 <BlogCard key={post.id} post={post} />
                             ))}

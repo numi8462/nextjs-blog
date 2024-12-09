@@ -37,7 +37,7 @@ const Post = async ({ params }) => {
             <div className="min-h-screen bg-black-100 ">
                 <main className="mx-auto flex justify-between">
                     <Sidebar />
-                    <article className="prose mt-20 mx-auto font-nanum p-5">
+                    <article className="prose mt-20 mx-auto font-nanum p-5 popupFromLeft">
                         <div className="flex flex-col justify-center items-center">
                             <h1 className="text-white text-7xl font-fugaz">
                                 {post.title}

@@ -30,14 +30,4 @@ const Tags = async () => {
     );
 };
 
-export async function generateStaticParams() {
-    const notionService = new NotionService();
-    const tags = await notionService.getAllTags();
-
-    return tags.map((tag) => ({
-        tag: tag.name
-    }))
-}
-
-
 export default Tags;
