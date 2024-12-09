@@ -4,6 +4,7 @@ import { BlogPost } from '@/@types/schema';
 import Sidebar from '@/components/ui/Sidebar';
 import Tags from '@/components/ui/Tags';
 import BlogCard from '@/components/BlogCard';
+import Footer from '@/components/Footer';
 
 const TagPage = async ({ params }) => {
     const notionService = new NotionService();
@@ -29,6 +30,9 @@ const TagPage = async ({ params }) => {
                     </div>
                 </div>
             </main>
+            <div className="w-full flex justify-center items-center">
+                <Footer/>
+            </div>
         </div>
     );
 };

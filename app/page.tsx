@@ -3,6 +3,7 @@ import BlogCard from "../components/BlogCard";
 import NotionService from "../services/notion-service";
 import Tags from "@/components/ui/Tags";
 import Sidebar from "@/components/ui/Sidebar";
+import Footer from "@/components/Footer";
 
 const Home = async () => {
     const notionService = new NotionService();
@@ -29,6 +30,10 @@ const Home = async () => {
                                 <BlogCard key={post.id} post={post} />
                             ))}
                         </div>
+                        <div className="w-full flex justify-center items-center">
+                            <Footer/>
+
+                        </div>
                     </div>
 
                     <div className="flex flex-col sticky top-0 h-[calc(100vh)] p-5 sidebar min-w-[20rem]">
@@ -36,6 +41,7 @@ const Home = async () => {
                     </div>
                 </div>
             </main>
+            
         </div>
     );
 };

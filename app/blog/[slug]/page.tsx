@@ -9,6 +9,7 @@ import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Image from "next/image";
 import dayjs from "dayjs";
+import Footer from "@/components/Footer";
 
 const Post = async ({ params }) => {
     const notionService = new NotionService();
@@ -99,14 +100,18 @@ const Post = async ({ params }) => {
                             >
                                 {p.markdown}
                             </ReactMarkdown>
+                            <div className="w-full flex justify-center items-center">
+                                <Footer/>
+                            </div>
                         </div>
-
+                        
                         
                     </article>
                     <div className="flex flex-col sticky top-0 h-[calc(100vh)] p-5 sidebar min-w-[20rem]">
                         <SearchBar />
                     </div>
                 </main>
+                
             </div>
         </>
     );

@@ -6,7 +6,6 @@ const Tags = async () => {
     const notionService = new NotionService();
     const tags = await notionService.getAllTags();
     const count = await notionService.getTotalPostCount();
-    console.log(tags);
 
     return (
         <div className="flex flex-col justify-center items-center gap-10">

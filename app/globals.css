@@ -66,15 +66,19 @@ body {
   .notion__container .notion-header {
     display: none !important;
   }
-  .reactMarkDown h1,
-  .reactMarkDown h2,
+
   .reactMarkDown h3,
   .reactMarkDown p,
   .reactMarkDown code,
   .reactMarkDown ul {
     @apply text-white;
   }
-  
+  .reactMarkDown h1 {
+    @apply text-blue-500 font-bold text-4xl
+  }
+  .reactMarkDown h2 {
+    @apply text-yellow-400 font-bold text-3xl
+  }
   .reactMarkDown strong{
     @apply text-white font-bold;
   }
