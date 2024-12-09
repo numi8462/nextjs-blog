@@ -17,8 +17,8 @@ const Tags = async () => {
             <div className="w-full text-xl tags">
                 <Link href={`/`} className="hover:underline">{`All (${count})`}</Link>
                 {tags.map((tag)=>(
-                    <Link href={`/tag/${tag.name}`}>
-                        <div key={tag.id} className="my-2 hover:underline">
+                    <Link href={`/tag/${tag.name}`} key={tag.id}>
+                        <div className="my-2 hover:underline">
                             {`${tag.name} (${tag.count})`}
                         </div>
                     </Link>

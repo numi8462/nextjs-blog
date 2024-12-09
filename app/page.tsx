@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { BlogPost } from "../@types/schema";
 import BlogCard from "../components/BlogCard";
 import NotionService from "../services/notion-service";
