@@ -74,16 +74,16 @@ body {
     @apply text-white;
   }
   .reactMarkDown h1 {
-    @apply text-blue-500 font-bold text-4xl
+    @apply text-white font-bold text-4xl
   }
   .reactMarkDown h2 {
-    @apply text-yellow-400 font-bold text-3xl
+    @apply text-white font-bold text-3xl
   }
   .reactMarkDown strong{
     @apply text-yellow-400 font-bold;
   }
   .reactMarkDown code{
-    @apply p-[5px] bg-[#3B414D] rounded-[4px] text-red-500 text-lg mx-2;
+    @apply p-[5px] bg-[#3B414D] rounded-[4px] text-red-500 text-sm;
   }
   .reactMarkDown code::before {
     @apply content-none;
