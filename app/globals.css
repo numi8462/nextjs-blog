@@ -80,7 +80,7 @@ body {
     @apply text-yellow-400 font-bold text-3xl
   }
   .reactMarkDown strong{
-    @apply text-white font-bold;
+    @apply text-yellow-400 font-bold;
   }
   .reactMarkDown code{
     @apply p-[5px] bg-[#3B414D] rounded-[4px] text-red-500 text-lg mx-2;
