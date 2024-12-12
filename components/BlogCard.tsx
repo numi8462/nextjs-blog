@@ -17,7 +17,7 @@ const BlogCard: FunctionComponent<BlogCardProps> = ({ post }) => {
                         <Image className="h-[300px] rounded-xl object-cover" height={300} width={600} src={post.cover} alt="cover image"/>
                     </div>
                     <div className={"flex flex-col h-full justify-between absolute p-5 rounded-xl w-full bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"}>
-                        <span className="block space-x-4">
+                        <span className="flex flex-wrap gap-2">
                             {post.tags.map((tag) => (
                                 <span
                                     key={tag.id}
