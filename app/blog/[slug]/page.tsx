@@ -22,7 +22,7 @@ const Post = async ({ params }) => {
     if (!p) {
         notFound();
     }
-    console.log(p);
+    // console.log(p);
     const post = p.post;
 
     return (
