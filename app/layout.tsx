@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: "Ylog",
     description: "Next.js와 Notion API를 활용한 개인 블로그",
     icons: {
-        icon: "/logo.svg",
+        icon: "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/logo.svg",
     },
 };
 
