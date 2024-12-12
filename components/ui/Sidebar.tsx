@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import ProfilePic from "@/public/profile.png";
+import gitIcon from "@/public/git.svg"
 import Link from "next/link";
 
 const Sidebar = () => {
@@ -11,7 +12,7 @@ const Sidebar = () => {
                     YLOG
                 </h1>
             </Link>
-            <div className="flex flex-col items-center justify-center p-2 mt-10">
+            <div className="flex flex-col items-center justify-center p-2 mt-10 gap-5">
                 <Image
                     src={ProfilePic}
                     alt="profile picture"
@@ -25,6 +26,14 @@ const Sidebar = () => {
                         <br /> 김영호 입니다.
                     </p>
                 </div>
+                <div className="flex block">
+                    <a href={"https://github.com/numi8462/"} className="flex gap-1 justify-start items-center text-blue-500 underline">
+                        <Image src={gitIcon} alt="git icon" width={20}/>
+                        github.com/numi8462
+                    </a>
+                </div>
+                
+                    
             </div>
         </div>
     );
