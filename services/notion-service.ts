@@ -268,7 +268,7 @@ export default class NotionService {
     // increase/decrease the likes of post
     async updateLikes(pageId: string, action: 'like' | 'unlike'): Promise<number> {
         try {
-            const response = await fetch('/api/increaseLikes', {
+            const response = await fetch('https://numi8462.github.io/nextjs-blog/api/increaseLikes', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
