@@ -268,14 +268,15 @@ export default class NotionService {
     // increase/decrease the likes of post
     async updateLikes(pageId: string, action: 'like' | 'unlike'): Promise<number> {
         try {
-            const response = await fetch('https://numi8462.github.io/nextjs-blog/api/increaseLikes', {
+            const response = await fetch('https://nextjs-blog-api.vercel.app/api/increaseLikes', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ id: pageId, action }),
+                credentials: 'include' // Ensure this is set
             });
-
+    
             const data = await response.json();
             return data.likes;
         } catch (error) {
@@ -283,6 +284,8 @@ export default class NotionService {
             throw error;
         }
     }
+    
+    
 
     
 }
