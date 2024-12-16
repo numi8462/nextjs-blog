@@ -34,7 +34,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "app/api/increaseLikes/route.js"  ],
   "exclude": [
     "node_modules"
   ]

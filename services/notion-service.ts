@@ -13,6 +13,7 @@ export default class NotionService {
         this.n2m = new NotionToMarkdown({ notionClient: this.client });
     }
 
+    // returns all published posts
     async getPublishedPosts(): Promise<BlogPost[]> {
         const database = process.env.NOTION_BLOG_DATABASE_ID ?? "";
 
@@ -49,6 +50,7 @@ export default class NotionService {
         }
     }
 
+    // returns posts by their tags
     async getPostsByTag(tag: string): Promise<BlogPost[]> {
         const database = process.env.NOTION_BLOG_DATABASE_ID ?? "";
     
@@ -85,6 +87,7 @@ export default class NotionService {
         }
     }
 
+    // returns all tags from posts
     async getAllTags(): Promise<Tag[]> {
         const database = process.env.NOTION_BLOG_DATABASE_ID ?? "";
     
@@ -131,6 +134,7 @@ export default class NotionService {
         }
     }
     
+    // returns the total post count
     async getTotalPostCount(): Promise<number> {
         const database = process.env.NOTION_BLOG_DATABASE_ID ?? "";
 
@@ -158,8 +162,7 @@ export default class NotionService {
         }
     }
 
-    
-
+    // returns a single blog post as a markdown
     async getSingleBlogPost(slug: string): Promise<PostPage> {
         if (!slug) {
             throw new Error("Slug parameter is required");
@@ -214,6 +217,7 @@ export default class NotionService {
         }
     }
 
+    // returns post as an object
     private static pageToPostTransformer(page: any): BlogPost {
         let cover = page.cover;
         let coverImg = defaultCover;
@@ -257,7 +261,28 @@ export default class NotionService {
                 page.properties["수정일"]?.last_edited_time ||
                 new Date().toISOString(),
             slug: page.properties["수식"]?.formula?.string || "수식 없음",
-            
+            likes: page.properties["숫자"]?.number || 0,
         };
     }
+
+    // increase/decrease the likes of post
+    async updateLikes(pageId: string, action: 'like' | 'unlike'): Promise<number> {
+        try {
+            const response = await fetch('/api/increaseLikes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: pageId, action }),
+            });
+
+            const data = await response.json();
+            return data.likes;
+        } catch (error) {
+            console.error('Failed to update likes:', error);
+            throw error;
+        }
+    }
+
+    
 }
