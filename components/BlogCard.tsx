@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
 import React, { FunctionComponent } from "react";
-import { FaHeart } from "react-icons/fa";
+import Likes from "./ui/Likes";
 
 type BlogCardProps = {
     post: BlogPost;
@@ -39,7 +39,7 @@ const BlogCard: FunctionComponent<BlogCardProps> = ({ post }) => {
                     </span>
                     <span className="flex items-center justify-between">
                         <h3 className="text-4xl font-bold leading-normal">{post.title}</h3>
-                        <p className="flex items-center text-xl gap-1"><FaHeart className="text-red-400"/>{post.likes}</p>
+                        <Likes postId={post.id}/>
                     </span>
                 </div>
             </div>

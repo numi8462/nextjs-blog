@@ -284,8 +284,24 @@ export default class NotionService {
             throw error;
         }
     }
-    
-    
 
+    // return likes
+    async getLikes(pageId: string): Promise<number> {
+        try {
+            const response = await fetch('https://nextjs-blog-api.vercel.app/api/getLikes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: pageId }),
+                credentials: 'include' // Ensure this is set
+            });
     
+            const data = await response.json();
+            return data.likes;
+        } catch (error) {
+            console.error('Failed to get likes:', error);
+            throw error;
+        }
+    }
 }
