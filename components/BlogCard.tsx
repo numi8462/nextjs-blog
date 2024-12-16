@@ -36,9 +36,9 @@ const BlogCard: FunctionComponent<BlogCardProps> = ({ post }) => {
                 <div className="flex flex-col p-2">
                     <span className="flex items-center justify-between">
                         <h4 className="text-2xl">{dayjs(post.created).format("YYYY-MM-DD")}</h4>
-                        <div className="flex items-center">
+                        <div className="flex items-center gap-2">
                             <FaHeart className="text-red-400" />
-                            <span>{post.likes}</span>
+                            <p className="text-xl">{post.likes}</p>
                         </div>
                     </span>
                     <span className="flex items-center">
