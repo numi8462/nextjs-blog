@@ -20,16 +20,20 @@ const Home = async () => {
                 <meta name="og:description" content="nextjs를 활용한 블로그" />
                 <meta name="og:image" content="" />
             </Head>
-            <Script
-                async
-                src="https://www.googletagmanager.com/gtag/js?id=G-DLNS1CL25M"
+            <Script 
+                id="google-tag-manager"
+                strategy="afterInteractive" 
+                src={`https://www.googletagmanager.com/gtag/js?id=G-DLNS1CL25M`}
             />
-            <Script>
-                {`window.dataLayer = window.dataLayer || [];
+            <Script id="google-tag-manager-script">
+                {`
+                window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', 'G-DLNS1CL25M');`}
+                gtag('config', 'G-DLNS1CL25M');
+                `}
             </Script>
+
             <div className="min-h-screen bg-black-100">
                 {/* <div className="sticky top-0 z-50">
                     <Navbar />
