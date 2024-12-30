@@ -71,19 +71,11 @@ body {
   .reactMarkDown p,
   .reactMarkDown code,
   .reactMarkDown ul,
-  .reactMarkDown ol,
+  .reactMarkDown ol li::marker,
   .reactMarkDown li {
     @apply text-white;
   }
   
-  .reactMarkDown ol {
-    list-style-type: none; 
-  }
-  
-  .reactMarkDown ol li::marker {
-    content: counter(item, decimal); 
-    color: white; 
-  }
 
   .reactMarkDown h1 {
     @apply text-white font-bold text-4xl
