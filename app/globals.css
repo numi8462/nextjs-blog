@@ -75,6 +75,16 @@ body {
   .reactMarkDown li {
     @apply text-white;
   }
+  
+  .reactMarkDown ol {
+    list-style-type: none; 
+  }
+  
+  .reactMarkDown ol li::marker {
+    content: counter(item, decimal); 
+    color: white; 
+  }
+
   .reactMarkDown h1 {
     @apply text-white font-bold text-4xl
   }
@@ -85,7 +95,7 @@ body {
     @apply text-yellow-400 font-bold;
   }
   .reactMarkDown code{
-    @apply p-[5px] bg-[#2F2F2D] rounded-[4px] text-red-100 text-sm;
+    @apply p-[4px] bg-[#2F2F2D] rounded-[4px] text-red-100 text-sm;
   }
   .reactMarkDown code::before {
     @apply content-none;
