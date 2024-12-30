@@ -243,6 +243,8 @@ export default class NotionService {
 
         if(tags.some(tag => tag.name === "programmers")){
             cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/programmers.png"
+        } else if(tags.some(tag => tag.name === "codeit")){
+            cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/codeit.png"
         }
 
         return {
