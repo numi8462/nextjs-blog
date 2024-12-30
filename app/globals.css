@@ -70,7 +70,9 @@ body {
   .reactMarkDown h3,
   .reactMarkDown p,
   .reactMarkDown code,
-  .reactMarkDown ul {
+  .reactMarkDown ul,
+  .reactMarkDown ol,
+  .reactMarkDown li {
     @apply text-white;
   }
   .reactMarkDown h1 {
@@ -83,7 +85,7 @@ body {
     @apply text-yellow-400 font-bold;
   }
   .reactMarkDown code{
-    @apply p-[5px] bg-[#3B414D] rounded-[4px] text-red-500 text-sm;
+    @apply p-[5px] bg-[#2F2F2D] rounded-[4px] text-red-100 text-sm;
   }
   .reactMarkDown code::before {
     @apply content-none;
