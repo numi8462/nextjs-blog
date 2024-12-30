@@ -4,7 +4,6 @@ import NotionService from "../services/notion-service";
 import Tags from "@/components/ui/Tags";
 import Sidebar from "@/components/ui/Sidebar";
 import Footer from "@/components/Footer";
-import cover from "@/public/cover.jpg"
 import Head from "next/head";
 import Script from "next/script";
 
@@ -20,17 +19,17 @@ const Home = async () => {
                 <meta name="og:title" content="누미의 블로그" />
                 <meta name="og:description" content="nextjs를 활용한 블로그" />
                 <meta name="og:image" content="" />
-                <Script
-                    async
-                    src="https://www.googletagmanager.com/gtag/js?id=G-DLNS1CL25M"
-                />
-                <Script>
-                    {`window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', 'G-DLNS1CL25M');`}
-                </Script>
             </Head>
+            <Script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-DLNS1CL25M"
+            />
+            <Script>
+                {`window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-DLNS1CL25M');`}
+            </Script>
             <div className="min-h-screen bg-black-100">
                 {/* <div className="sticky top-0 z-50">
                     <Navbar />
