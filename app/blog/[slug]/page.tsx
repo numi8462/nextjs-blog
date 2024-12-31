@@ -10,7 +10,7 @@ import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Image from "next/image";
 import dayjs from "dayjs";
 import Footer from "@/components/Footer";
-import LikeButton from "@/components/ui/LikeButton";
+// import LikeButton from "@/components/ui/LikeButton";
 
 const Post = async ({ params }) => {
     const notionService = new NotionService();
