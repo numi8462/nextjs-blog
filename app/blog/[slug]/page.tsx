@@ -10,6 +10,7 @@ import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Image from "next/image";
 import dayjs from "dayjs";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/ui/Navbar";
 
 const Post = async ({ params }) => {
     const notionService = new NotionService();
@@ -36,11 +37,12 @@ const Post = async ({ params }) => {
             </Head>
 
             <div className="min-h-screen bg-black-100 ">
+                <Navbar/>
                 <main className="mx-auto flex justify-between">
                     <Sidebar />
-                    <article className="prose mt-20 mx-auto font-nanum p-5 popupFromLeft">
+                    <article className="prose mt-10 mx-auto font-nanum p-5 popupFromLeft">
                         <div className="flex flex-col justify-center items-center">
-                            <h1 className="text-white text-7xl font-fugaz">
+                            <h1 className="text-white text-7xl font-fugaz max-md:text-4xl">
                                 {post.title}
                             </h1>
 
@@ -50,27 +52,28 @@ const Post = async ({ params }) => {
                                 </span>
                                 <span className="block space-x-4">
                                     {post.tags.map((tag) => (
-                                        <span
+                                        <a
+                                            href={`/tag/${tag.name}`}
                                             key={tag.id}
-                                            className="bg-white text-black px-4 py-2 text-lg rounded-xl"
+                                            className="bg-white text-black px-4 py-2 text-lg rounded-xl no-underline hover:bg-gray-400"
                                         >
                                             {tag.name}
-                                        </span>
+                                        </a>
                                     ))}
                                 </span>
                             </div>
                             
-
-                            <div className="flex flex-1 items-center justify-center w-full">
+                            <div className="">
                                 <Image
                                     className="rounded-xl object-cover"
                                     src={post.cover}
                                     alt="cover image"
                                     layout="responsive"
-                                    width={768}
-                                    height={768}
+                                    width={350}
+                                    height={350}
                                 />
                             </div>
+                            
                             <ReactMarkdown
                                 className={"reactMarkDown w-full"}
                                 components={{

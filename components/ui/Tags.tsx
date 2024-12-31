@@ -8,12 +8,12 @@ const Tags = async () => {
     const count = await notionService.getTotalPostCount();
 
     return (
-        <div className="flex flex-col justify-center items-center gap-10">
+        <div className="flex flex-col justify-center items-center gap-10 ">
             <span className="text-4xl font-fugaz mt-10">
                 Tags
             </span>
 
-            <div className="w-full text-xl tags">
+            <div className="w-full text-xl tags xl:px-10">
                 <Link href={`/`} className="hover:underline">{`All (${count})`}</Link>
                 {tags.map((tag)=>(
                     <Link href={`/tag/${tag.name}`} key={tag.id}>

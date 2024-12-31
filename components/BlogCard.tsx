@@ -13,9 +13,7 @@ const BlogCard: FunctionComponent<BlogCardProps> = ({ post }) => {
         <Link href={`/blog/${post.slug}`}>
             <div className="flex flex-col flex-1 max-w-[600px]">
                 <div className="flex flex-col gap-2 relative group ">
-                    <div>
-                        <Image className="h-[300px] rounded-xl object-cover" height={300} width={600} src={post.cover} alt="cover image"/>
-                    </div>
+                    <Image className="rounded-xl object-cover h-[18rem]" height={300} width={600} src={post.cover} alt="cover image"/>
                     <div className={"flex flex-col h-full justify-between absolute p-5 rounded-xl w-full bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"}>
                         <span className="flex flex-wrap gap-2">
                             {post.tags.map((tag) => (

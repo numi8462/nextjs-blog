@@ -6,13 +6,13 @@ import Link from "next/link";
 
 const Sidebar = () => {
     return (
-        <div className="flex flex-col sticky top-0 h-[calc(100vh)] p-5 min-w-[20rem] sidebar ">
-            <Link href={"/"} className="flex items-center gap-2">
+        <div className="flex flex-col sticky top-0 h-[calc(100vh)] min-w-[20rem] sidebar ">
+            <Link href={"/"} className="flex items-center gap-2 p-5">
                 <h1 className="font-extrabold text-3xl text-white hover:text-yellow-500 hover:underline font-fugaz">
                     YLOG
                 </h1>
             </Link>
-            <div className="flex flex-col items-center justify-center p-2 mt-10 gap-5">
+            <div className="flex flex-col items-center justify-center mt-10 gap-5">
                 <Image
                     src={ProfilePic}
                     alt="profile picture"
