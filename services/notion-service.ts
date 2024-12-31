@@ -265,47 +265,6 @@ export default class NotionService {
                 page.properties["수정일"]?.last_edited_time ||
                 new Date().toISOString(),
             slug: page.properties["수식"]?.formula?.string || "수식 없음",
-            // likes: page.properties["숫자"]?.number || 0,
         };
     }
-
-    // // increase/decrease the likes of post
-    // async updateLikes(pageId: string, action: 'like' | 'unlike'): Promise<number> {
-    //     try {
-    //         const response = await fetch('https://nextjs-blog-api.vercel.app/api/increaseLikes', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({ id: pageId, action }),
-    //             credentials: 'include' // Ensure this is set
-    //         });
-    
-    //         const data = await response.json();
-    //         return data.likes;
-    //     } catch (error) {
-    //         console.error('Failed to update likes:', error);
-    //         throw error;
-    //     }
-    // }
-
-    // // return likes
-    // async getLikes(pageId: string): Promise<number> {
-    //     try {
-    //         const response = await fetch('https://nextjs-blog-api.vercel.app/api/getLikes', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({ id: pageId }),
-    //             credentials: 'include' // Ensure this is set
-    //         });
-    
-    //         const data = await response.json();
-    //         return data.likes;
-    //     } catch (error) {
-    //         console.error('Failed to get likes:', error);
-    //         throw error;
-    //     }
-    // }
 }

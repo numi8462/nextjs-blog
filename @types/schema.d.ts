@@ -14,7 +14,6 @@ export type BlogPost = {
   description: string;
   updated: string;
   created: string;
-  // likes: number;
 };
 
 export type PostPage = {

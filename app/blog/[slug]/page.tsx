@@ -10,7 +10,6 @@ import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Image from "next/image";
 import dayjs from "dayjs";
 import Footer from "@/components/Footer";
-// import LikeButton from "@/components/ui/LikeButton";
 
 const Post = async ({ params }) => {
     const notionService = new NotionService();
@@ -48,7 +47,6 @@ const Post = async ({ params }) => {
                             <div className="flex flex-col w-full">
                                 <span className="flex items-center justify-between text-white font-bold">
                                     <p>Updated: {dayjs(post.created).format("YYYY-MM-DD")}</p>
-                                    {/* <LikeButton postId={post.id} initialLikes={post.likes}/> */}
                                 </span>
                                 <span className="block space-x-4">
                                     {post.tags.map((tag) => (

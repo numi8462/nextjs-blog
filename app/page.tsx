@@ -37,9 +37,6 @@ const Home = async () => {
             </Script>
 
             <div className="min-h-screen bg-black-100">
-                {/* <div className="sticky top-0 z-50">
-                    <Navbar />
-                </div> */}
                 <main className="mx-auto relative">
                     <div className="flex justify-between w-full relative">
                         <Sidebar />
