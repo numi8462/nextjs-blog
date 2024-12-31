@@ -63,16 +63,14 @@ const Post = async ({ params }) => {
                                 </span>
                             </div>
                             
-                            <div className="">
-                                <Image
-                                    className="rounded-xl object-cover"
-                                    src={post.cover}
-                                    alt="cover image"
-                                    layout="responsive"
-                                    width={350}
-                                    height={350}
-                                />
-                            </div>
+                            <Image
+                                className="rounded-xl object-cover"
+                                src={post.cover}
+                                alt="cover image"
+                                layout="responsive"
+                                width={350}
+                                height={350}
+                            />
                             
                             <ReactMarkdown
                                 className={"reactMarkDown w-full"}
