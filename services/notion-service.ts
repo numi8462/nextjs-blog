@@ -1,6 +1,6 @@
 import { BlogPost, PostPage, Tag } from "@/@types/schema";
 import { Client } from "@notionhq/client";
-import defaultCover from "../public/cover.jpg";
+import defaultCover from "../public/webdev.png";
 import { NotionToMarkdown } from "notion-to-md";
 import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"; // Import the type definition
 
