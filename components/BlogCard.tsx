@@ -13,7 +13,7 @@ const BlogCard: FunctionComponent<BlogCardProps> = ({ post }) => {
         <Link href={`/blog/${post.slug}`}>
             <div className="flex flex-col flex-1 max-w-[600px]">
                 <div className="flex flex-col gap-2 relative group ">
-                    <Image className="rounded-xl object-cover h-[18rem]" height={300} width={600} src={post.cover} alt="cover image"/>
+                    <Image className="rounded-xl object-cover aspect-video" height={300} width={600} src={post.cover} alt="cover image"/>
                     <div className={"flex flex-col h-full justify-between absolute p-5 rounded-xl w-full bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"}>
                         <span className="flex flex-wrap gap-2">
                             {post.tags.map((tag) => (
@@ -30,12 +30,12 @@ const BlogCard: FunctionComponent<BlogCardProps> = ({ post }) => {
                         </span>
                     </div>
                 </div>
-                <div className="flex flex-col p-2">
+                <div className="flex flex-col p-2 text-white">
                     <span className="flex items-center justify-between">
-                        <h4 className="text-2xl">{dayjs(post.created).format("YYYY-MM-DD")}</h4>
+                        <h4 className="text-2xl max-sm:text-xl">{dayjs(post.created).format("YYYY-MM-DD")}</h4>
                     </span>
                     <span className="flex items-center">
-                        <h3 className="text-4xl font-bold leading-normal">{post.title}</h3>
+                        <h3 className="text-4xl font-bold leading-normal max-sm:text-2xl">{post.title}</h3>
                     </span>
                 </div>
             </div>

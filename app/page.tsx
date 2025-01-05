@@ -42,7 +42,7 @@ const Home = async () => {
                         <Sidebar />
 
                         <div className="flex flex-col justify-center items-center h-full mx-auto w-full px-10 mb-10 mt-16">
-                            <h1 className="text-7xl font-extrabold font-fugaz"  >            
+                            <h1 className="text-7xl font-extrabold font-fugaz text-white">            
                                 {"POSTS."} 
                             </h1>            
                             <div className="xl:hidden">

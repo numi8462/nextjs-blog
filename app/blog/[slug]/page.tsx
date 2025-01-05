@@ -36,7 +36,7 @@ const Post = async ({ params }) => {
                 <meta name="og:image" content={p.post.cover} />
             </Head>
 
-            <div className="min-h-screen bg-black-100 ">
+            <div className="min-h-screen bg-black-100 w-[100vw]">
                 <Navbar/>
                 <main className="mx-auto flex justify-between">
                     <Sidebar />
@@ -64,7 +64,7 @@ const Post = async ({ params }) => {
                             </div>
                             
                             <Image
-                                className="rounded-xl object-cover"
+                                className="rounded-xl object-cover w-[100%] h-auto"
                                 src={post.cover}
                                 alt="cover image"
                                 layout="responsive"
@@ -80,7 +80,7 @@ const Post = async ({ params }) => {
                                             className || ""
                                         );
                                         return hasLang ? (
-                                            <div className="overflow-x-hidden max-sm:w-[400px] w-full">
+                                            <div className="overflow-x-scroll w-[100%]">
                                                 <SyntaxHighlighter
                                                     style={oneDark}
                                                     language={hasLang[1]}
