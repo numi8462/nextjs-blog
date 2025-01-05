@@ -26,7 +26,7 @@ const BlogCard: FunctionComponent<BlogCardProps> = ({ post }) => {
                             ))}
                         </span>
                         <span className="text-white">
-                            <p className="text-2xl ">{post.description}</p>
+                            <p className="text-xl ">{post.description}</p>
                         </span>
                     </div>
                 </div>

@@ -36,13 +36,13 @@ const Post = async ({ params }) => {
                 <meta name="og:image" content={p.post.cover} />
             </Head>
 
-            <div className="min-h-screen bg-black-100 w-[100vw]">
+            <div className="min-h-screen bg-black-100">
                 <Navbar/>
                 <main className="mx-auto flex justify-between">
                     <Sidebar />
-                    <article className="prose mt-10 mx-auto font-nanum p-5 popupFromLeft">
+                    <article className="prose mt-10 mx-auto font-nanum p-5 popupFromLeft w-[100vw]">
                         <div className="flex flex-col justify-center items-center">
-                            <h1 className="text-white text-7xl font-fugaz max-md:text-4xl">
+                            <h1 className="block text-white text-7xl font-fugaz max-md:text-5xl !leading-[4rem]">
                                 {post.title}
                             </h1>
 
@@ -64,7 +64,7 @@ const Post = async ({ params }) => {
                             </div>
                             
                             <Image
-                                className="rounded-xl object-cover w-[100%] h-auto"
+                                className="rounded-xl object-cover"
                                 src={post.cover}
                                 alt="cover image"
                                 layout="responsive"
@@ -80,12 +80,12 @@ const Post = async ({ params }) => {
                                             className || ""
                                         );
                                         return hasLang ? (
-                                            <div className="overflow-x-scroll w-[100%]">
+                                            <div className="w-[100%]">
                                                 <SyntaxHighlighter
                                                     style={oneDark}
                                                     language={hasLang[1]}
                                                     PreTag="div"
-                                                    className="mockup-code scrollbar-thin scrollbar-track-base-content/5 scrollbar-thumb-base-content/40 scrollbar-track-rounded-md scrollbar-thumb-rounded  "
+                                                    className="mockup-code scrollbar-thin scrollbar-track-base-content/5 scrollbar-thumb-base-content/40 scrollbar-track-rounded-md scrollbar-thumb-rounded"
                                                     showLineNumbers={true}
                                                     useInlineStyles={true}
                                                 >
