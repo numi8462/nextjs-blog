@@ -241,7 +241,7 @@ export default class NotionService {
 
         let tags = page.properties["태그"]?.multi_select || []
 
-        if(tags.some(tag => tag.name === "weekly-paper")){
+        if(tags.some(tag => tag.name === "weekly")){
             cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/weeklypaper.png"
         } else if(tags.some(tag => tag.name === "programmers")){
             cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/programmers.png"
