@@ -9,7 +9,7 @@ const Tags = async () => {
 
     return (
         <div className="flex flex-col justify-center items-center gap-10 text-white">
-            <span className="text-4xl font-fugaz mt-10">
+            <span className="text-3xl font-fugaz mt-10">
                 Tags
             </span>
 

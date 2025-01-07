@@ -13,11 +13,11 @@ const TagPage = async ({ params }) => {
     return (
         <div className="min-h-screen bg-black-100">
             <main className="mx-auto relative">
-                <div className="flex justify-between w-full relative">
+                <div className="flex justify-between relative">
                     <Sidebar />
 
-                    <div className="flex flex-col justify-center items-center h-full mx-auto w-full px-10 mb-10 mt-16">
-                        <h1 className="text-7xl font-extrabold font-fugaz mx-auto max-md:text-5xl">{`"${params.tag}"`}</h1>
+                    <div className="flex flex-col justify-center items-center h-full mx-auto w-full px-5 mt-16">
+                        <h1 className="text-7xl font-extrabold font-fugaz mx-auto max-md:text-4xl">{`"${params.tag}"`}</h1>
                         <div className="xl:hidden">
                             <Tags />
                         </div>
@@ -26,16 +26,18 @@ const TagPage = async ({ params }) => {
                                 <BlogCard key={post.id} post={post} />
                             ))}
                         </div>
+                        <div className="w-full flex justify-center items-center">
+                            <Footer/>
+                        </div>
                     </div>
 
                     <div className="flex flex-col sticky top-0 h-[calc(100vh)] p-5 sidebar min-w-[20rem]">
                         <Tags />
                     </div>
                 </div>
+
             </main>
-            <div className="w-full flex justify-center items-center">
-                <Footer/>
-            </div>
+            
         </div>
     );
 };
