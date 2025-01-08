@@ -17,7 +17,7 @@ const TagPage = async ({ params }) => {
                     <Sidebar />
 
                     <div className="flex flex-col justify-center items-center h-full mx-auto w-full px-5 mt-16">
-                        <h1 className="text-7xl font-extrabold font-fugaz mx-auto max-md:text-4xl">{`"${params.tag}"`}</h1>
+                        <h1 className="text-7xl font-extrabold font-fugaz mx-auto max-md:text-4xl text-white">{`"${params.tag}"`}</h1>
                         <div className="xl:hidden">
                             <Tags />
                         </div>
