@@ -97,7 +97,7 @@ body {
   }
   .reactMarkDown blockquote {
     background-color: #282c34;
-    padding: 1rem;
+    padding: 0.1rem 1rem;
     border-inline-start-color: #FFBF00;
   }
   .popupFromBottom {
