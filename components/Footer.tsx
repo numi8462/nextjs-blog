@@ -8,7 +8,7 @@ const Footer = () => {
         >
             <div className="flex flex-col items-center justify-center">
                 <p className="text-white-200 md:mt-10 my-5 text-center">
-                    질문이나 연락을 원하시면 저의 개인 메일을 통해 메일 주세요.
+                    문의 사항이 있으시면 언제든지 개인 메일로 연락 주시기 바랍니다.
                 </p>
 				<a href="mailto:yhk8462@naver.com" className="flex justify-center items-center gap-2 text-white">메일 보내기 <FaLocationArrow/></a>
                 
