@@ -84,7 +84,7 @@ body {
     @apply text-white font-bold text-3xl
   }
   .reactMarkDown strong{
-    @apply text-yellow-400 font-bold;
+    @apply text-yellow font-bold;
   }
   .reactMarkDown code{
     @apply p-[4px] bg-[#2F2F2D] rounded-[4px] text-red-100 text-sm;
@@ -94,6 +94,11 @@ body {
   }
   .reactMarkDown code::after {
     @apply content-none;
+  }
+  .reactMarkDown blockquote {
+    background-color: #282c34;
+    padding: 1rem;
+    border-inline-start-color: #FFBF00;
   }
   .popupFromBottom {
     animation: popupFromBottom 0.8s ease-out;

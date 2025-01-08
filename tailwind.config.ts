@@ -53,7 +53,7 @@ const config = {
           100: "#f88379"
         },
         yellow : {
-          DEFAULT: '#f3b301'
+          DEFAULT: '#FFBF00'
         },
         red : {
           100: '#EB5757'
