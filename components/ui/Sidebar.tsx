@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import ProfilePic from "@/public/profile.png";
-import gitIcon from "@/public/git.svg"
 import Link from "next/link";
 
 const Sidebar = () => {
