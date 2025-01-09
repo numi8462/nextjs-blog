@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import ProfilePic from "@/public/profile.png";
 import Link from "next/link";
+// import gitIcon from "@/public/git.svg"
 
 const Sidebar = () => {
     return (
@@ -20,9 +21,9 @@ const Sidebar = () => {
                         height={200}
                     />
                 </div>
-                <div className="flex flex-col gap-1">
-                    <a href={"https://github.com/numi8462/"} className="flex justify-start items-center gap-1 hover:text-yellow">
-                        <span className="text-2xl font-bold leading-10">@numi</span>
+                <div className="flex flex-col gap-2">
+                    <a href={"https://github.com/numi8462/"} target="_blank" className="flex-grow-0 block text-3xl font-bold ">
+                        <span className="hover:text-yellow">@numi</span>
                     </a>
                     <p>
                         안녕하세요, 프론트앤드 개발자
