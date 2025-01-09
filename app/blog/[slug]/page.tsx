@@ -53,9 +53,9 @@ const Post = async ({ params }) => {
                                 <span className="block space-x-4">
                                     {post.tags.map((tag) => (
                                         <a
-                                            href={`/tag/${tag.name}`}
+                                            href={`/nextjs-blog/tag/${tag.name}`}
                                             key={tag.id}
-                                            className="bg-white text-black px-4 py-2 text-lg rounded-xl no-underline hover:bg-gray-400"
+                                            className="bg-white text-black px-4 py-2 text-lg rounded-xl no-underline hover:bg-yellow"
                                         >
                                             {tag.name}
                                         </a>
