@@ -76,12 +76,14 @@ body {
     @apply text-white;
   }
   
-
+  .reactMarkDown a {
+    @apply text-gray-500;
+  }
   .reactMarkDown h1 {
-    @apply text-white font-bold text-4xl
+    @apply text-white font-bold text-4xl;
   }
   .reactMarkDown h2 {
-    @apply text-white font-bold text-3xl
+    @apply text-white font-bold text-3xl;
   }
   .reactMarkDown strong{
     @apply text-yellow font-bold;
