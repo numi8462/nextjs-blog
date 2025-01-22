@@ -67,6 +67,7 @@ body {
     display: none !important;
   }
 
+  .reactMarkDown,
   .reactMarkDown h3,
   .reactMarkDown p,
   .reactMarkDown code,
@@ -89,7 +90,7 @@ body {
     @apply text-yellow font-bold;
   }
   .reactMarkDown code{
-    @apply p-[4px] bg-[#2F2F2D] rounded-[4px] text-red-100 text-sm;
+    @apply p-[4px] bg-[#2F2F2D] rounded-[4px] text-red-100 text-sm mx-1;
   }
   .reactMarkDown code::before {
     @apply content-none;
@@ -105,6 +106,19 @@ body {
   .reactMarkDown img {
     border-radius: .75rem;
   }
+
+  .reactMarkDown table,
+  .reactMarkDown th,
+  .reactMarkDown td {
+    border: 0.1px solid #ccc;
+    color: white;
+  }
+
+  .reactMarkDown th {
+    padding-top: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
   .popupFromBottom {
     animation: popupFromBottom 0.8s ease-out;
   }

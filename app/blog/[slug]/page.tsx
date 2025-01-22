@@ -11,6 +11,7 @@ import Image from "next/image";
 import dayjs from "dayjs";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/ui/Navbar";
+import remarkGfm from 'remark-gfm';
 
 const Post = async ({ params }) => {
     const notionService = new NotionService();
@@ -74,6 +75,7 @@ const Post = async ({ params }) => {
                             
                             <ReactMarkdown
                                 className={"reactMarkDown w-full"}
+                                remarkPlugins={[remarkGfm]}
                                 components={{
                                     code({ className, ...props }) {
                                         const hasLang = /language-(\w+)/.exec(

@@ -205,7 +205,7 @@ export default class NotionService {
             const mdblocks = await this.n2m.pageToMarkdown(page.id);
             markdown = this.n2m.toMarkdownString(mdblocks).parent;
             // console.log(mdblocks)
-            // console.log(markdown)
+            console.log(markdown)
 
             return { 
                 post, 
