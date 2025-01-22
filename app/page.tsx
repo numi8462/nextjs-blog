@@ -4,7 +4,6 @@ import NotionService from "../services/notion-service";
 import Tags from "@/components/ui/Tags";
 import Sidebar from "@/components/ui/Sidebar";
 import Footer from "@/components/Footer";
-import Head from "next/head";
 import Script from "next/script";
 
 const Home = async () => {
@@ -13,15 +12,6 @@ const Home = async () => {
 
     return (
         <>
-            <Head>
-                <title>누미의 블로그</title>
-                <meta name="description" content="nextjs를 활용한 개인 블로그" />
-                <meta name="og:title" content="누미의 블로그" />
-                <meta name="og:url" content="https://numi8462.github.io/nextjs-blog/" />
-                <meta name="og:type" content="website" />
-                <meta name="og:description" content="nextjs를 활용한 개인 블로그" />
-                <meta name="og:image" content="https://numi8462.github.io/nextjs-blog/public/blog.png" />
-            </Head>
             <Script 
                 id="google-tag-manager"
                 strategy="afterInteractive" 

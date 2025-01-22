@@ -35,7 +35,16 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="kr">
+        <html lang="ko">
+            <head>
+                <title>{`${metadata.title}`}</title> 
+                <meta name="description" content={`${metadata.description}`} />
+                {/* ... add other meta tags based on metadata or post data */}
+                <meta name="og:url" content="https://numi8462.github.io/nextjs-blog/" />
+                <meta name="og:type" content="website" />
+                <meta name="og:description" content="nextjs를 활용한 개인 블로그" />
+                <meta name="og:image" content="https://numi8462.github.io/nextjs-blog/public/blog.png" />
+            </head>
             <body
                 className={`${notoSansKr.className} ${fugaz_one.variable} ${nanum_gothic.variable}`}
             >
