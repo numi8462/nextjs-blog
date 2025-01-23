@@ -1,6 +1,6 @@
 import { BlogPost, PostPage, Tag } from "@/@types/schema";
 import { Client } from "@notionhq/client";
-import defaultCover from "../public/webdev.png";
+import defaultCover from "../public/cover/webdev.png";
 import { NotionToMarkdown } from "notion-to-md";
 import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints"; // Import the type definition
 
@@ -242,11 +242,13 @@ export default class NotionService {
         let tags = page.properties["태그"]?.multi_select || []
 
         if(tags.some(tag => tag.name === "weekly")){
-            cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/weeklypaper.png"
+            cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/weeklypaper.png"
         } else if(tags.some(tag => tag.name === "programmers")){
-            cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/programmers.png"
+            cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/programmers.png"
         } else if(tags.some(tag => tag.name === "codeit")){
-            cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/codeit.png"
+            cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/codeit.png"
+        } else if(tags.some(tag => tag.name === "javascript")){
+            cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/js.jpeg"
         }
 
         return {
