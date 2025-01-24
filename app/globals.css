@@ -90,6 +90,9 @@ body {
     @apply text-yellow font-bold;
   }
   .reactMarkDown code{
+    @apply bg-[#2F2F2D] rounded-[4px];
+  }
+  .reactMarkDown p code{
     @apply p-[4px] bg-[#2F2F2D] rounded-[4px] text-red-100 text-sm mx-1;
   }
   .reactMarkDown code::before {
