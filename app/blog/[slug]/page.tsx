@@ -43,7 +43,7 @@ const Post = async ({ params }) => {
                     <Sidebar />
                     <article className="prose mt-10 mx-auto font-nanum p-5 popupFromLeft w-[100vw]">
                         <div className="flex flex-col justify-center items-center">
-                            <h1 className="block text-white text-7xl font-nanum max-md:text-5xl !leading-[5rem] text-center">
+                            <h1 className="block text-white text-7xl font-bold font-nanum max-md:text-5xl !leading-[5rem] text-center">
                                 {post.title}
                             </h1>
 
