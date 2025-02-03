@@ -41,7 +41,7 @@ const Post = async ({ params }) => {
                 <Navbar/>
                 <main className="mx-auto flex justify-between">
                     <Sidebar />
-                    <article className="prose mt-10 mx-auto font-nanum p-5 popupFromLeft w-[100vw]">
+                    <article className="prose max-w-5xl mt-10 mx-auto font-nanum p-5 popupFromLeft w-[100vw]">
                         <div className="flex flex-col justify-center items-center">
                             <h1 className="block text-white text-7xl font-bold font-nanum max-md:text-5xl !leading-[5rem] text-center">
                                 {post.title}
@@ -65,12 +65,12 @@ const Post = async ({ params }) => {
                             </div>
                             
                             <Image
-                                className="rounded-xl object-cover"
+                                className="rounded-xl object-cover max-w-2xl"
                                 src={post.cover}
                                 alt="cover image"
                                 layout="responsive"
-                                width={350}
-                                height={350}
+                                width={100}
+                                height={100}
                             />
                             
                             <ReactMarkdown
