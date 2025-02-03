@@ -40,7 +40,7 @@ export default function RootLayout({
             <Head>
                 <title>Ylog</title>
                 <meta name="description" content="Next.js와 Notion API를 활용한 개인 개발 블로그" />
-                <meta name="image" content={"/cover.png"} />
+                <meta name="image" content={"https://numi8462.github.io/nextjs-blog/cover/blog.png"} />
             </Head>
             <body
                 className={`${notoSansKr.className} ${fugaz_one.variable} ${nanum_gothic.variable}`}
