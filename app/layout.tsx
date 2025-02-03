@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR, Fugaz_One, Nanum_Gothic } from "next/font/google";
+import "./globals.css";
 
 const notoSansKr = Noto_Sans_KR({
     weight: ["500"],
