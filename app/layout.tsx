@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Head from "next/head";
-import "./globals.css";
 import { Noto_Sans_KR, Fugaz_One, Nanum_Gothic } from "next/font/google";
 
 const notoSansKr = Noto_Sans_KR({
@@ -28,6 +26,18 @@ export const metadata: Metadata = {
     icons: {
         icon: "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/logo.svg",
     },
+    openGraph: {
+        title: "Ylog",
+        description: "Next.js와 Notion API를 활용한 개인 개발 블로그",
+        images: [
+            {
+                url: "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/blog.png",
+                width: 1200,
+                height: 630,
+                alt: "Ylog Cover Image",
+            },
+        ],
+    },
 };
 
 export default function RootLayout({
@@ -37,11 +47,6 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ko">
-            <Head>
-                <title>Ylog</title>
-                <meta name="description" content="Next.js와 Notion API를 활용한 개인 개발 블로그" />
-                <meta name="image" content={"https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/blog.png"} />
-            </Head>
             <body
                 className={`${notoSansKr.className} ${fugaz_one.variable} ${nanum_gothic.variable}`}
             >
