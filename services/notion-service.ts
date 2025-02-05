@@ -205,7 +205,7 @@ export default class NotionService {
             const mdblocks = await this.n2m.pageToMarkdown(page.id);
             markdown = this.n2m.toMarkdownString(mdblocks).parent;
             // console.log(mdblocks)
-            console.log(markdown)
+            // console.log(markdown)
 
             return { 
                 post, 
@@ -250,6 +250,8 @@ export default class NotionService {
         } else if(tags.some(tag => tag.name === "javascript")){
             cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/js.jpeg"
         }
+
+        console.log(page.properties["이름"]?.title?.[0]?.plain_text);
 
         return {
             id: page.id,

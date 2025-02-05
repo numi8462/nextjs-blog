@@ -12,6 +12,7 @@ import dayjs from "dayjs";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/ui/Navbar";
 import remarkGfm from 'remark-gfm';
+import ScrollToTop from "@/components/ui/ScrollToTop";
 
 const Post = async ({ params }) => {
     const notionService = new NotionService();
@@ -39,6 +40,7 @@ const Post = async ({ params }) => {
 
             <div className="min-h-screen bg-black-100">
                 <Navbar/>
+                <ScrollToTop />
                 <main className="mx-auto flex justify-between">
                     <Sidebar />
                     <article className="prose max-w-5xl mt-10 mx-auto font-nanum p-5 popupFromLeft w-[100vw]">

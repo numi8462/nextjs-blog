@@ -5,6 +5,7 @@ import Sidebar from '@/components/ui/Sidebar';
 import Tags from '@/components/ui/Tags';
 import BlogCard from '@/components/BlogCard';
 import Footer from '@/components/Footer';
+import ScrollToTop from "@/components/ui/ScrollToTop";
 
 const TagPage = async ({ params }) => {
     const notionService = new NotionService();
@@ -15,7 +16,7 @@ const TagPage = async ({ params }) => {
             <main className="mx-auto relative">
                 <div className="flex justify-between relative">
                     <Sidebar />
-
+                    <ScrollToTop />
                     <div className="flex flex-col justify-center items-center h-full mx-auto w-full px-5 mt-16">
                         <h1 className="text-7xl font-extrabold font-fugaz mx-auto max-md:text-4xl text-white">{`"${params.tag}"`}</h1>
                         <div className="xl:hidden">

@@ -5,6 +5,7 @@ import Tags from "@/components/ui/Tags";
 import Sidebar from "@/components/ui/Sidebar";
 import Footer from "@/components/Footer";
 import Script from "next/script";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 
 const Home = async () => {
     const notionService = new NotionService();
@@ -28,6 +29,7 @@ const Home = async () => {
 
             <div className="min-h-screen bg-black-100">
                 <main className="mx-auto relative">
+                    <ScrollToTop />
                     <div className="flex justify-between w-full relative">
                         <Sidebar />
 
