@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
         domains: [
             "prod-files-secure.s3.us-west-2.amazonaws.com",
             "github.com",
-            "raw.githubusercontent.com"
+            "raw.githubusercontent.com",
             // 다른 도메인을 여기에 추가하세요
         ],
     },

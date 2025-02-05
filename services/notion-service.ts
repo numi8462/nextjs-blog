@@ -219,25 +219,28 @@ export default class NotionService {
 
     // returns post as an object
     private static pageToPostTransformer(page: any): BlogPost {
-        let cover = page.cover;
+        let cover = page.properties["커버"]?.url || "";
         let coverImg = defaultCover;
         
         if (!cover) {
-            cover = { type: "default", url: coverImg };
+            cover = coverImg;
         }
 
-        switch (cover.type) {
-            case "file":
-                cover = page.cover.file.url;
-                break;
-            case "external":
-                cover = page.cover.external.url;
-                // console.log(cover);
-                break;
-            default:
-                cover = coverImg;
-                break;
-        }
+        console.log(page.properties["이름"]?.title?.[0]?.plain_text);
+        console.log("cover:" + page.properties["커버"]?.url);
+        
+        // switch (cover.type) {
+        //     case "file":
+        //         cover = page.cover.file.url;
+        //         break;
+        //     case "external":
+        //         cover = page.cover.external.url;
+        //         // console.log(cover);
+        //         break;
+        //     default:
+        //         cover = coverImg;
+        //         break;
+        // }
 
         let tags = page.properties["태그"]?.multi_select || []
 
@@ -251,7 +254,6 @@ export default class NotionService {
             cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/js.jpeg"
         }
 
-        console.log(page.properties["이름"]?.title?.[0]?.plain_text);
 
         return {
             id: page.id,
