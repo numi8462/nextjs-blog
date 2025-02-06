@@ -219,40 +219,32 @@ export default class NotionService {
 
     // returns post as an object
     private static pageToPostTransformer(page: any): BlogPost {
+        // set cover
         let cover = page.properties["커버"]?.url || "";
-        let coverImg = defaultCover;
-        
-        if (!cover) {
-            cover = coverImg;
-        }
 
-        console.log(page.properties["이름"]?.title?.[0]?.plain_text);
-        console.log("cover:" + page.properties["커버"]?.url);
-        
-        // switch (cover.type) {
-        //     case "file":
-        //         cover = page.cover.file.url;
-        //         break;
-        //     case "external":
-        //         cover = page.cover.external.url;
-        //         // console.log(cover);
-        //         break;
-        //     default:
-        //         cover = coverImg;
-        //         break;
-        // }
-
+        // if no cover set cover according to tags
         let tags = page.properties["태그"]?.multi_select || []
 
-        if(tags.some(tag => tag.name === "weekly")){
-            cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/weeklypaper.png"
-        } else if(tags.some(tag => tag.name === "programmers")){
-            cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/programmers.png"
-        } else if(tags.some(tag => tag.name === "codeit")){
-            cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/codeit.png"
-        } else if(tags.some(tag => tag.name === "javascript")){
-            cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/js.jpeg"
+        if(!cover){
+            switch (true) {
+                case tags.some(tag => tag.name === "weekly"):
+                  cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/weeklypaper.png";
+                  break;
+                case tags.some(tag => tag.name === "programmers"):
+                  cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/programmers.png";
+                  break;
+                case tags.some(tag => tag.name === "codeit"):
+                  cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/codeit.png";
+                  break;
+                case tags.some(tag => tag.name === "javascript"):
+                  cover = "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/js.jpeg";
+                  break;
+                default: // Optional default case if none of the tags match
+                  cover = defaultCover ;
+                  break;
+              }
         }
+
 
 
         return {
