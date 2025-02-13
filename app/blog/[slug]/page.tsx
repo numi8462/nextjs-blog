@@ -45,7 +45,7 @@ const Post = async ({ params }) => {
           <Sidebar />
           <article className="prose max-w-3xl mt-10 mx-auto font-nanum p-5 popupFromLeft w-[100vw]">
             <div className="flex flex-col justify-center items-center">
-              <h1 className="block text-white text-7xl font-bold font-nanum max-md:text-5xl !leading-[5rem] text-center">
+              <h1 className="block text-white text-7xl font-bold font-nanum max-md:text-5xl text-center mb-4">
                 {post.title}
               </h1>
 
@@ -67,7 +67,7 @@ const Post = async ({ params }) => {
               </div>
 
               <Image
-                className="rounded-xl object-cover max-w-2xl"
+                className="rounded-xl object-cover"
                 src={post.cover}
                 alt="cover image"
                 layout="responsive"

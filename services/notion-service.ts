@@ -223,7 +223,7 @@ export default class NotionService {
         let cover = page.properties["커버"]?.url || "";
 
         // if no cover set cover according to tags
-        let tags = page.properties["태그"]?.multi_select || []
+        const tags = page.properties["태그"]?.multi_select || []
 
         if(!cover){
             switch (true) {
