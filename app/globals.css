@@ -21,29 +21,29 @@ body {
 
 @keyframes popupFromBottom {
   0% {
-      transform: translateY(100%);
-      opacity: 0;
+    transform: translateY(100%);
+    opacity: 0;
   }
   50% {
-      transform: translateY(-10%);
-      opacity: 1;
+    transform: translateY(-10%);
+    opacity: 1;
   }
   100% {
-      transform: translateY(0);
+    transform: translateY(0);
   }
 }
 
 @keyframes popupFromLeft {
   0% {
-      transform: translateX(-5%);
-      opacity: 0;
+    transform: translateX(-5%);
+    opacity: 0;
   }
   50% {
-      transform: translateX(0%);
-      opacity: 1;
+    transform: translateX(0%);
+    opacity: 1;
   }
   100% {
-      transform: translateX(0);
+    transform: translateX(0);
   }
 }
 
@@ -51,10 +51,10 @@ body {
   .heading {
     @apply font-bold text-4xl md:text-5xl text-center;
   }
-  .zoom-effect:hover { 
-    transform: scale(1.1); 
-  } 
-  .zoom-effect { 
+  .zoom-effect:hover {
+    transform: scale(1.1);
+  }
+  .zoom-effect {
     transition: transform 0.3s ease;
   }
   .sidebar {
@@ -76,7 +76,7 @@ body {
   .reactMarkDown li {
     @apply text-white;
   }
-  
+
   .reactMarkDown a {
     @apply text-gray-500;
   }
@@ -86,13 +86,13 @@ body {
   .reactMarkDown h2 {
     @apply text-white font-bold text-3xl;
   }
-  .reactMarkDown strong{
+  .reactMarkDown strong {
     @apply text-yellow font-bold;
   }
-  .reactMarkDown code{
+  .reactMarkDown code {
     @apply bg-[#2F2F2D] rounded-[4px];
   }
-  .reactMarkDown p code{
+  .reactMarkDown p code {
     @apply p-[4px] bg-[#2F2F2D] rounded-[4px] text-red-100 text-sm mx-1;
   }
   .reactMarkDown code::before {
@@ -104,10 +104,12 @@ body {
   .reactMarkDown blockquote {
     background-color: #282c34;
     padding: 0.1rem 1rem;
-    border-inline-start-color: #FFBF00;
+    border-inline-start-color: #ffbf00;
   }
   .reactMarkDown img {
-    border-radius: .75rem;
+    border-radius: 0.75rem;
+    margin: 0 auto;
+    max-width: 40rem;
   }
 
   .reactMarkDown table,
