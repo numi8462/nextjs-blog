@@ -14,7 +14,11 @@ import remarkGfm from "remark-gfm";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import { Metadata } from "next";
 
-export async function generateMetadata({ params }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   try {
     const notionService = new NotionService();
     const p = await notionService.getSingleBlogPost((await params).slug);
@@ -51,7 +55,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
   }
 }
 
-const Post = async ({ params }) => {
+const Post = async ({ params }: { params: { slug: string } }) => {
   const notionService = new NotionService();
   const p: PostPage = await notionService.getSingleBlogPost(
     (
