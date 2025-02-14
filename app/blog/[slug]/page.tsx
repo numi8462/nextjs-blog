@@ -26,9 +26,35 @@ export async function generateMetadata({ params }): Promise<Metadata> {
   }
 
   const post = p.post;
+  const tags = p.post.tags;
 
-  console.log(typeof post.cover);
-  const coverUrl = typeof post.cover === "string" ? post.cover : "";
+  let defaultCoverUrl =
+    "https://raw.githubusercontent.com/numi8462/nextjs-blog/refs/heads/main/public/cover/webdev.png";
+
+  if (typeof post.cover !== "string") {
+    switch (true) {
+      case tags.some((tag) => tag.name === "weekly"):
+        defaultCoverUrl =
+          "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/weeklypaper.png";
+        break;
+      case tags.some((tag) => tag.name === "programmers"):
+        defaultCoverUrl =
+          "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/programmers.png";
+        break;
+      case tags.some((tag) => tag.name === "codeit"):
+        defaultCoverUrl =
+          "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/codeit.png";
+        break;
+      case tags.some((tag) => tag.name === "javascript"):
+        defaultCoverUrl =
+          "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/js.jpeg";
+        break;
+      default: // Optional default case if none of the tags match
+        break;
+    }
+  }
+
+  const coverUrl = defaultCoverUrl;
 
   return {
     title: `${post.title} - Ylog`,
