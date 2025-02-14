@@ -14,13 +14,7 @@ import remarkGfm from "remark-gfm";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import type { Metadata } from "next";
 
-type Props = {
-  params: {
-    slug: string;
-  };
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }): Promise<Metadata> {
   const notionService = new NotionService();
   const p: PostPage = await notionService.getSingleBlogPost(params.slug);
 
