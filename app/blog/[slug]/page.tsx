@@ -17,7 +17,7 @@ import { Metadata } from "next";
 export async function generateMetadata({ params }): Promise<Metadata> {
   try {
     const notionService = new NotionService();
-    const p = await notionService.getSingleBlogPost(params.slug);
+    const p = await notionService.getSingleBlogPost((await params).slug);
 
     if (!p.post) {
       return {
