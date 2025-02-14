@@ -27,7 +27,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 
   const post = p.post;
   const tags = p.post.tags;
-
+  console.log(tags);
   let defaultCoverUrl =
     "https://raw.githubusercontent.com/numi8462/nextjs-blog/refs/heads/main/public/cover/webdev.png";
 
@@ -53,8 +53,10 @@ export async function generateMetadata({ params }): Promise<Metadata> {
         break;
     }
   }
+  const coverUrl =
+    typeof post.cover === "string" ? post.cover : defaultCoverUrl;
 
-  const coverUrl = defaultCoverUrl;
+  // console.log("URL:" + coverUrl);
 
   return {
     title: `${post.title} - Ylog`,
