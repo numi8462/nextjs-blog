@@ -14,7 +14,13 @@ import remarkGfm from "remark-gfm";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import type { Metadata } from "next";
 
-export async function generateMetadata({ params }): Promise<Metadata> {
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const notionService = new NotionService();
   const p: PostPage = await notionService.getSingleBlogPost(params.slug);
 
@@ -27,6 +33,9 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 
   const post = p.post;
 
+  console.log(typeof post.cover);
+  const coverUrl = typeof post.cover === "string" ? post.cover : "";
+
   return {
     title: `${post.title} - Ylog`,
     description: post.description || "Read this post on Ylog.",
@@ -35,7 +44,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
       description: post.description || "",
       images: [
         {
-          url: post.cover,
+          url: coverUrl,
           width: 1200,
           height: 630,
           alt: post.title,
