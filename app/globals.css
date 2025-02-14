@@ -107,6 +107,7 @@ body {
     border-inline-start-color: #ffbf00;
   }
   .reactMarkDown img {
+    width: 100%;
     border-radius: 0.75rem;
     margin: 0 auto;
     max-width: 40rem;
