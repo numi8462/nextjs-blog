@@ -13,6 +13,42 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/ui/Navbar";
 import remarkGfm from "remark-gfm";
 import ScrollToTop from "@/components/ui/ScrollToTop";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const notionService = new NotionService();
+  const p: PostPage = await notionService.getSingleBlogPost(params.slug);
+
+  if (!p) {
+    return {
+      title: "Not Found",
+      description: "The page you are looking for does not exist.",
+    };
+  }
+
+  const post = p.post;
+
+  return {
+    title: post.title,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      images: [
+        {
+          url: post.cover,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+  };
+}
 
 const Post = async ({ params }) => {
   const notionService = new NotionService();
