@@ -47,7 +47,7 @@ const BlogCard: FunctionComponent<BlogCardProps> = ({ post }) => {
             </h4>
           </span>
           <span className="flex items-center">
-            <h3 className="text-4xl font-bold leading-normal max-sm:text-2xl word-break-keep-all">
+            <h3 className="text-4xl font-bold leading-normal max-sm:text-2xl word-break-keep-allt">
               {post.title}
             </h3>
           </span>
