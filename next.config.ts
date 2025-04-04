@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
       'raw.githubusercontent.com',
       'img1.daumcdn.net',
       'velog.velcdn.com',
-      'tsh.io/',
+      'tsh.io',
       'private-user-images.githubusercontent.com',
       // 다른 도메인을 여기에 추가하세요
     ],
