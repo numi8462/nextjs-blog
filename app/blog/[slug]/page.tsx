@@ -130,7 +130,7 @@ const Post = async ({ params }) => {
               />
 
               <ReactMarkdown
-                className={'reactMarkDown w-full'}
+                className={'reactMarkDown w-full break-keep'}
                 remarkPlugins={[remarkGfm]}
                 components={{
                   code({ className, ...props }) {
