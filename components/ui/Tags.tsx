@@ -1,32 +1,30 @@
-import NotionService from "@/services/notion-service";
+import {
+  getCachedAllTags,
+  getCachedTotalPostCount,
+} from "@/services/notion-service";
 import Link from "next/link";
 import React from "react";
 
 const Tags = async () => {
-    const notionService = new NotionService();
-    const tags = await notionService.getAllTags();
-    const count = await notionService.getTotalPostCount();
+  const tags = await getCachedAllTags();
+  const count = await getCachedTotalPostCount();
 
-    return (
-        <div className="flex flex-col justify-center items-center gap-10 text-white">
-            <span className="text-3xl font-fugaz mt-10">
-                Tags
-            </span>
+  return (
+    <div className="flex flex-col justify-center items-center gap-10 text-white">
+      <span className="text-3xl font-fugaz mt-10">Tags</span>
 
-            <div className="w-full text-xl tags xl:px-10 text-white">
-                <Link href={`/`} className="hover:underline">{`All (${count})`}</Link>
-                {tags.map((tag)=>(
-                    <Link href={`/tag/${tag.name}`} key={tag.id}>
-                        <div className="my-2 hover:underline">
-                            {`${tag.name} (${tag.count})`}
-                        </div>
-                    </Link>
-                    
-                ))}
+      <div className="w-full text-xl tags xl:px-10 text-white">
+        <Link href={`/`} className="hover:underline">{`All (${count})`}</Link>
+        {tags.map((tag) => (
+          <Link href={`/tag/${tag.name}`} key={tag.id}>
+            <div className="my-2 hover:underline">
+              {`${tag.name} (${tag.count})`}
             </div>
-            
-        </div>
-    );
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Tags;

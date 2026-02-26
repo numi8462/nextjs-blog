@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
-import NotionService from "@/services/notion-service";
-import { PostPage } from "@/@types/schema";
+import NotionService, {
+  getCachedSingleBlogPost,
+} from "@/services/notion-service";
 import Sidebar from "@/components/ui/Sidebar";
 import SearchBar from "@/components/ui/Tags";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -14,10 +15,23 @@ import remarkGfm from "remark-gfm";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import type { Metadata } from "next";
 
+const notionService = new NotionService();
+
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+  const posts = await notionService.getPublishedPosts();
+
+  const params: { slug: string }[] = [];
+  for (const post of posts) {
+    params.push({ slug: post.slug });
+    await new Promise((res) => setTimeout(res, 500));
+  }
+
+  return params;
+}
+
 export async function generateMetadata({ params }): Promise<Metadata> {
-  const notionService = new NotionService();
   const { slug } = await params;
-  const p: PostPage = await notionService.getSingleBlogPost(slug);
+  const p = await getCachedSingleBlogPost(slug);
 
   if (!p) {
     return {
@@ -78,10 +92,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 }
 
 const Post = async ({ params }) => {
-  const notionService = new NotionService();
-  const p: PostPage = await notionService.getSingleBlogPost(
-    (await params).slug,
-  );
+  const p = await getCachedSingleBlogPost((await params).slug);
 
   if (!p) {
     notFound();
@@ -168,14 +179,5 @@ const Post = async ({ params }) => {
     </>
   );
 };
-
-export async function generateStaticParams() {
-  const notionService = new NotionService();
-  const posts = await notionService.getPublishedPosts();
-
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
-}
 
 export default Post;
