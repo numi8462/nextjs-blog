@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "npmrc": "legacy-peer-deps=true",
   "dependencies": {
     "@9gustin/react-notion-render": "^3.11.4",
     "@notionhq/client": "^2.2.15",
