@@ -1,5 +1,5 @@
 import { BlogPost, PostPage, Tag } from "@/@types/schema";
-import { Client } from "@notionhq/client";
+import { APIErrorCode, Client, isNotionClientError } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
 import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { cache } from "react";
@@ -22,7 +22,8 @@ export const getCachedSingleBlogPost = cache((slug: string) =>
   new NotionService().getSingleBlogPost(slug),
 );
 
-const defaultCover = "/cover/webdev.png";
+const defaultCover =
+  "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/webdev.png";
 
 export default class NotionService {
   client: Client;
@@ -40,8 +41,12 @@ export default class NotionService {
   ): Promise<T> {
     try {
       return await fn();
-    } catch (error: any) {
-      if (error?.code === "rate_limited" && retries > 0) {
+    } catch (error) {
+      if (
+        isNotionClientError(error) &&
+        error.code === APIErrorCode.RateLimited &&
+        retries > 0
+      ) {
         console.log(
           `Rate limited. ${delay}ms 후 재시도... (남은 횟수: ${retries})`,
         );
