@@ -1,69 +1,70 @@
-import { notFound } from 'next/navigation';
-import ReactMarkdown from 'react-markdown';
-import NotionService from '@/services/notion-service';
-import { PostPage } from '@/@types/schema';
-import Sidebar from '@/components/ui/Sidebar';
-import SearchBar from '@/components/ui/Tags';
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import Image from 'next/image';
-import dayjs from 'dayjs';
-import Footer from '@/components/Footer';
-import Navbar from '@/components/ui/Navbar';
-import remarkGfm from 'remark-gfm';
-import ScrollToTop from '@/components/ui/ScrollToTop';
-import type { Metadata } from 'next';
+import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import NotionService from "@/services/notion-service";
+import { PostPage } from "@/@types/schema";
+import Sidebar from "@/components/ui/Sidebar";
+import SearchBar from "@/components/ui/Tags";
+import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import Image from "next/image";
+import dayjs from "dayjs";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/ui/Navbar";
+import remarkGfm from "remark-gfm";
+import ScrollToTop from "@/components/ui/ScrollToTop";
+import type { Metadata } from "next";
 
 export async function generateMetadata({ params }): Promise<Metadata> {
   const notionService = new NotionService();
-  const p: PostPage = await notionService.getSingleBlogPost(params.slug);
+  const { slug } = await params;
+  const p: PostPage = await notionService.getSingleBlogPost(slug);
 
   if (!p) {
     return {
-      title: 'Post Not Found - Ylog',
+      title: "Post Not Found - Ylog",
       description: "The post you're looking for doesn't exist.",
     };
   }
 
   const post = p.post;
   const tags = p.post.tags;
-  console.log(tags);
-  let defaultCoverUrl =
-    'https://raw.githubusercontent.com/numi8462/nextjs-blog/refs/heads/main/public/cover/webdev.png';
 
-  if (typeof post.cover !== 'string') {
+  let defaultCoverUrl =
+    "https://raw.githubusercontent.com/numi8462/nextjs-blog/refs/heads/main/public/cover/webdev.png";
+
+  if (typeof post.cover !== "string") {
     switch (true) {
-      case tags.some((tag) => tag.name === 'weekly'):
+      case tags.some((tag) => tag.name === "weekly"):
         defaultCoverUrl =
-          'https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/weeklypaper.png';
+          "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/weeklypaper.png";
         break;
-      case tags.some((tag) => tag.name === 'programmers'):
+      case tags.some((tag) => tag.name === "programmers"):
         defaultCoverUrl =
-          'https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/programmers.png';
+          "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/programmers.png";
         break;
-      case tags.some((tag) => tag.name === 'codeit'):
+      case tags.some((tag) => tag.name === "codeit"):
         defaultCoverUrl =
-          'https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/codeit.png';
+          "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/codeit.png";
         break;
-      case tags.some((tag) => tag.name === 'javascript'):
+      case tags.some((tag) => tag.name === "javascript"):
         defaultCoverUrl =
-          'https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/js.jpeg';
+          "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/js.jpeg";
         break;
       default: // Optional default case if none of the tags match
         break;
     }
   }
   const coverUrl =
-    typeof post.cover === 'string' ? post.cover : defaultCoverUrl;
+    typeof post.cover === "string" ? post.cover : defaultCoverUrl;
 
   // console.log("URL:" + coverUrl);
 
   return {
     title: `${post.title} - Ylog`,
-    description: post.description || 'Read this post on Ylog.',
+    description: post.description || "Read this post on Ylog.",
     openGraph: {
       title: post.title,
-      description: post.description || '',
+      description: post.description || "",
       images: [
         {
           url: coverUrl,
@@ -79,9 +80,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 const Post = async ({ params }) => {
   const notionService = new NotionService();
   const p: PostPage = await notionService.getSingleBlogPost(
-    (
-      await params
-    ).slug
+    (await params).slug,
   );
 
   if (!p) {
@@ -105,7 +104,7 @@ const Post = async ({ params }) => {
 
               <div className="flex flex-col w-full">
                 <span className="flex items-center justify-between text-white font-bold">
-                  <p>Updated: {dayjs(post.created).format('YYYY-MM-DD')}</p>
+                  <p>Updated: {dayjs(post.created).format("YYYY-MM-DD")}</p>
                 </span>
                 <span className="block space-x-4">
                   {post.tags.map((tag) => (
@@ -130,11 +129,11 @@ const Post = async ({ params }) => {
               />
 
               <ReactMarkdown
-                className={'reactMarkDown w-full break-keep'}
+                className={"reactMarkDown w-full break-keep"}
                 remarkPlugins={[remarkGfm]}
                 components={{
                   code({ className, ...props }) {
-                    const hasLang = /language-(\w+)/.exec(className || '');
+                    const hasLang = /language-(\w+)/.exec(className || "");
                     return hasLang ? (
                       <div className="w-[100%]">
                         <SyntaxHighlighter
@@ -145,7 +144,7 @@ const Post = async ({ params }) => {
                           showLineNumbers={true}
                           useInlineStyles={true}
                         >
-                          {String(props.children).replace(/\n$/, '')}
+                          {String(props.children).replace(/\n$/, "")}
                         </SyntaxHighlighter>
                       </div>
                     ) : (
