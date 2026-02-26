@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import Script from "next/script";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 
+export const revalidate = 3600;
+
 const Home = async () => {
   const posts = await getCachedPublishedPosts();
 

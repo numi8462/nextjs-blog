@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
-import NotionService, {
+import {
+  getCachedPublishedPosts,
   getCachedSingleBlogPost,
 } from "@/services/notion-service";
 import Sidebar from "@/components/ui/Sidebar";
@@ -15,18 +16,13 @@ import remarkGfm from "remark-gfm";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import type { Metadata } from "next";
 
-const notionService = new NotionService();
+export const revalidate = 3600;
+export const dynamicParams = true;
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const posts = await notionService.getPublishedPosts();
-
-  const params: { slug: string }[] = [];
-  for (const post of posts) {
-    params.push({ slug: post.slug });
-    await new Promise((res) => setTimeout(res, 500));
-  }
-
-  return params;
+  const posts = await getCachedPublishedPosts();
+  // 최근 10개만 빌드 시 생성
+  return posts.slice(0, 10).map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }): Promise<Metadata> {

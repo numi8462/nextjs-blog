@@ -4,24 +4,6 @@ import { NotionToMarkdown } from "notion-to-md";
 import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { cache } from "react";
 
-export const getCachedPublishedPosts = cache(() =>
-  new NotionService().getPublishedPosts(),
-);
-
-export const getCachedAllTags = cache(() => new NotionService().getAllTags());
-
-export const getCachedTotalPostCount = cache(() =>
-  new NotionService().getTotalPostCount(),
-);
-
-export const getCachedPostsByTag = cache((tag: string) =>
-  new NotionService().getPostsByTag(tag),
-);
-
-export const getCachedSingleBlogPost = cache((slug: string) =>
-  new NotionService().getSingleBlogPost(slug),
-);
-
 const defaultCover =
   "https://raw.githubusercontent.com/numi8462/nextjs-blog/main/public/cover/webdev.png";
 
@@ -88,64 +70,6 @@ export default class NotionService {
         sorts: [{ property: "생성일", direction: "descending" }],
       });
       return response.results.map(NotionService.pageToPostTransformer);
-    });
-  }
-
-  async getAllTags(): Promise<Tag[]> {
-    const database = process.env.NOTION_BLOG_DATABASE_ID ?? "";
-    if (!database)
-      throw new Error(
-        "NOTION_BLOG_DATABASE_ID 환경 변수가 설정되지 않았습니다.",
-      );
-
-    return this.withRetry(async () => {
-      const response = await this.client.databases.query({
-        database_id: database,
-        filter: { property: "태그", multi_select: { is_not_empty: true } },
-      });
-
-      const tagCounts: {
-        [tag: string]: { count: number; color: string; id: string };
-      } = {};
-
-      response.results.forEach((res) => {
-        if ("properties" in res) {
-          const properties = (res as PageObjectResponse).properties;
-          if (properties["태그"]?.type === "multi_select") {
-            properties["태그"].multi_select.forEach((tag) => {
-              const color = tag.color || "#f9f9f9";
-              if (tagCounts[tag.name]) {
-                tagCounts[tag.name].count++;
-              } else {
-                tagCounts[tag.name] = { count: 1, color, id: tag.id };
-              }
-            });
-          }
-        }
-      });
-
-      return Object.entries(tagCounts).map(([name, { count, color, id }]) => ({
-        id,
-        name,
-        count,
-        color,
-      }));
-    });
-  }
-
-  async getTotalPostCount(): Promise<number> {
-    const database = process.env.NOTION_BLOG_DATABASE_ID ?? "";
-    if (!database)
-      throw new Error(
-        "NOTION_BLOG_DATABASE_ID 환경 변수가 설정되지 않았습니다.",
-      );
-
-    return this.withRetry(async () => {
-      const response = await this.client.databases.query({
-        database_id: database,
-        filter: { property: "퍼블리시", checkbox: { equals: true } },
-      });
-      return response.results.length;
     });
   }
 
@@ -223,3 +147,49 @@ export default class NotionService {
     };
   }
 }
+
+export const getCachedPublishedPosts = cache(() =>
+  new NotionService().getPublishedPosts(),
+);
+
+export const getCachedAllTags = cache(async (): Promise<Tag[]> => {
+  const posts = await getCachedPublishedPosts(); // 별도 API 호출 없이 재활용
+
+  const tagCounts: {
+    [tag: string]: { count: number; color: string; id: string };
+  } = {};
+
+  posts.forEach((post) => {
+    post.tags.forEach((tag: any) => {
+      if (tagCounts[tag.name]) {
+        tagCounts[tag.name].count++;
+      } else {
+        tagCounts[tag.name] = {
+          count: 1,
+          color: tag.color || "#f9f9f9",
+          id: tag.id,
+        };
+      }
+    });
+  });
+
+  return Object.entries(tagCounts).map(([name, { count, color, id }]) => ({
+    id,
+    name,
+    count,
+    color,
+  }));
+});
+
+export const getCachedTotalPostCount = cache(async (): Promise<number> => {
+  const posts = await getCachedPublishedPosts();
+  return posts.length;
+});
+
+export const getCachedPostsByTag = cache((tag: string) =>
+  new NotionService().getPostsByTag(tag),
+);
+
+export const getCachedSingleBlogPost = cache((slug: string) =>
+  new NotionService().getSingleBlogPost(slug),
+);

@@ -1,4 +1,4 @@
-import NotionService, { getCachedPostsByTag } from "@/services/notion-service";
+import { getCachedPostsByTag } from "@/services/notion-service";
 import React from "react";
 import Sidebar from "@/components/ui/Sidebar";
 import Tags from "@/components/ui/Tags";
@@ -6,8 +6,12 @@ import BlogCard from "@/components/BlogCard";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 
+export const revalidate = 3600;
+export const dynamicParams = true;
+
 const TagPage = async ({ params }) => {
-  const posts = await getCachedPostsByTag(params.tag);
+  const { tag } = await params;
+  const posts = await getCachedPostsByTag(tag);
 
   return (
     <div className="min-h-screen bg-black-100">
@@ -16,7 +20,7 @@ const TagPage = async ({ params }) => {
           <Sidebar />
           <ScrollToTop />
           <div className="flex flex-col justify-center items-center h-full mx-auto w-full px-5 mt-16">
-            <h1 className="text-7xl font-extrabold font-fugaz mx-auto max-md:text-4xl text-white">{`"${params.tag}"`}</h1>
+            <h1 className="text-7xl font-extrabold font-fugaz mx-auto max-md:text-4xl text-white">{`"${tag}"`}</h1>
             <div className="xl:hidden">
               <Tags />
             </div>
@@ -38,14 +42,5 @@ const TagPage = async ({ params }) => {
     </div>
   );
 };
-
-export async function generateStaticParams() {
-  const notionService = new NotionService();
-  const tags = await notionService.getAllTags();
-
-  return tags.map((tag) => ({
-    tag: tag.name,
-  }));
-}
 
 export default TagPage;
